@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="197.514" height="191.32" viewBox="0 0 197.514 191.32">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="パス_5" data-name="パス 5" d="M117.28,0,28.163,159.181,0,151.289Z" transform="translate(123.707 0) rotate(51)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="グループ_2" data-name="グループ 2" transform="translate(-39 106.843)">
+    <text id="Visualizer" transform="translate(50.741 14.757)" fill="#fff" font-size="35" font-family="ToppanBunkyuGothicPr6N-Regular, Toppan Bunkyu Gothic"><tspan x="0" y="0">Visualizer</tspan></text>
+    <path id="パス_1" data-name="パス 1" d="M117.28,0,28.163,159.181,0,151.289Z" transform="translate(162.707 -106.843) rotate(51)" fill="#fff"/>
+    <g id="マスクグループ_2" data-name="マスクグループ 2" transform="translate(39 -106.843)" clip-path="url(#clip-path)">
+      <text id="Visualizer-2" data-name="Visualizer" transform="translate(11.741 121.601)" fill="#1d1c29" font-size="35" font-family="ToppanBunkyuGothicPr6N-Regular, Toppan Bunkyu Gothic"><tspan x="0" y="0">Visualizer</tspan></text>
+    </g>
+  </g>
+</svg>

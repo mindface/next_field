@@ -1,0 +1,16 @@
+.tabs
+  padding: 0 0 30px
+  &-item
+    min-width: 120px
+    padding: 10px
+    text-align: center
+    font-size: 1.6rem
+    cursor: pointer
+    transition: box-shadow 0.2s
+    &:hover
+      box-shadow: 0 2px 0 0 $base_color inset
+    &.active
+      box-shadow: 0 4px 0 0 $base_color inset
+    .aid
+      font-size: 1.2rem
+      color: $gary_color
