@@ -56,7 +56,7 @@ export default function MemoSection() {
     }
   
     return new Promise(function(resolve,reject){
-     fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader).then((response,reject) => {
+     fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader).then((response) => {
       return response.json()
       })
       .then((res) => {
