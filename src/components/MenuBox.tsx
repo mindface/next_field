@@ -1,6 +1,6 @@
 import React , { useRef,useState,useEffect } from 'react'
 import Link from 'next/link'
-import Load from "./module/Load";
+import Circle from "./module/Circle";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
@@ -35,7 +35,7 @@ export default function MenuBox() {
   };
 
   useEffect( ()=> {
-    let bg = new Load(el.current)
+    let bg = new Circle(el.current)
   },[])
 
   function switchBackground(pathName){

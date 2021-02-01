@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import gsap from "gsap"
 
-export default class Load {
+export default class Circle {
   private readonly _scene: THREE.Scene
   private readonly L_camera: any
   private L_renderer: THREE.WebGLRenderer
@@ -34,7 +34,7 @@ export default class Load {
 
       vec3 d = vec3(0.0);
       vec2 p2 = ( gl_FragCoord.xy * 1.4 - (resolution + 500.0) ) / min(resolution.x, resolution.y);
-      float f = 0.01 / abs(length(p2) - 0.8+(glowZ*0.6));
+      float f = 0.01 / abs(length(p2) - 0.8+(glowZ*0.1));
 
       gl_FragColor += vec4(vec3(f),1.3);
 

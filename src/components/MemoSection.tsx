@@ -4,14 +4,14 @@ import OnLoadJs from "../on_load_js/base";
 
 export default function MemoSection() {
    const el = useRef(null)
-
-   const lll = [1,2,3,4,5]
+   const [post_data,setPostData] = useState([])
    
    useEffect(() => {
      const on_load_js = new OnLoadJs()
      on_load_js.init()
      const titles = el.current.querySelectorAll('.content__title')
      textFade(titles)
+     fetachGetData()
    },[])
 
    function textFade(titles){
@@ -26,6 +26,50 @@ export default function MemoSection() {
      });
    }
 
+   async function fetachGetData(){
+    let fetchGetHeader:object = {
+      method: 'GET',
+      headers: {
+       "Content-Type": "application/json; charset=utf-8",
+      },
+      credentials: 'same-origin',
+      mode: "cors",
+    }
+
+     const res = await fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader)
+     console.log()
+     if(res.status < 400){
+      res.json().then( respose => {
+        setPostData(respose)
+      } )
+     }
+   }
+
+   function _API_FETCH_() {
+    let fetchGetHeader:object = {
+      method: 'GET',
+      headers: {
+       "Content-Type": "application/json; charset=utf-8",
+      },
+      credentials: 'same-origin',
+      mode: "cors",
+    }
+  
+    return new Promise(function(resolve,reject){
+     fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader).then((response,reject) => {
+      return response.json()
+      })
+      .then((res) => {
+        resolve(res)
+      })
+      .catch((error) => {
+        console.log("error")
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
    return (
      <>
        <MemoSectionNavi />
@@ -35,28 +79,24 @@ export default function MemoSection() {
              <h3 className="content__title">Code data</h3>
              <div className="content__text">以前検証した内容を記録しています。</div>
              <div className="data-box">
-               {lll.map( (e,index) => 
-                 <div key={index} className="box">
-                 <h3 className="title">swiper.jsモーダルとの組み合わせ</h3>
-                 <div className="text"></div>
-                 <pre className="pre">
-                    <code>
-                    &lt;div class="swiper-container"&gt;
-                          &lt;div class="swiper-wrapper"&gt;
-                              &lt;div class="swiper-slide"&gt;Slide 1&lt;/div&gt;
-                              &lt;div class="swiper-slide"&gt;Slide 2&lt;/div&gt;
-                              &lt;div class="swiper-slide"&gt;Slide 3&lt;/div&gt;
-                          &lt;/div&gt;
-                          &lt;div class="swiper-pagination"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-button-prev"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-button-next"&gt;&lt;/div&gt;
-                          &lt;div class="swiper-scrollbar"&gt;&lt;/div&gt;
-                        &lt;/div&gt;
-                      </code>
-                    </pre>
-                  </div>
-                 )
+               { post_data.map( (item,index) => {
+                  return (
+                   <a href={'http://wwwdi.work?params='+item.view_params} target="_new">
+                      <div key={'item'+index} className="box">
+                        <div className="box__text">
+                          <h3 className="title">{item.title.rendered}</h3>
+                          <div className="text" dangerouslySetInnerHTML={{__html:item.content.rendered}} >
+                          </div>
+                        </div>
+                        <div className="img-box">
+                          <img src={item.custom_fields} alt="" className="img"/>
+                        </div>
+                      </div>
+                   </a>
+                  )
+                 })
                }
+
              </div>
            </div>
          </div>
