@@ -19,6 +19,12 @@ export default class Circle {
      gl_Position = vec4( position, 1.0 );
     }`
 
+    let c_width = 500.0
+
+    if(window.innerWidth > 1280){
+      c_width = 600.0
+    }
+
     this.__fragment = `
     precision mediump float;
 
@@ -33,7 +39,7 @@ export default class Circle {
       float glowZ = cos(time) * 0.5 + 0.5;
 
       vec3 d = vec3(0.0);
-      vec2 p2 = ( gl_FragCoord.xy * 1.4 - (resolution + 500.0) ) / min(resolution.x, resolution.y);
+      vec2 p2 = ( gl_FragCoord.xy * 1.5 - (resolution + resolution/2.0) ) / min(resolution.x, resolution.y);
       float f = 0.01 / abs(length(p2) - 0.8+(glowZ*0.1));
 
       gl_FragColor += vec4(vec3(f),1.3);

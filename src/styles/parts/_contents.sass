@@ -1,3 +1,4 @@
+@use './settings'
 
 .wrapper
   position: relative
@@ -43,6 +44,8 @@
     width: 310px
     min-height: 464px
     border: 1px solid $white_color
+    @media screen and ( max-width: $width-tab )
+      width: calc(100% - 60px)
   .card
     &__face
       max-width: 106px
@@ -73,8 +76,12 @@
     top: 0
     left: 0
     height: 100vh
+    max-width: 520px
     width: 50vw
     background-color: rgba(255,255,255,0.48)
+    @media screen and ( max-width: $width-tab )
+       width: 100vw
+      
   .info-box,
   .skill-box
     padding: 0 0 60px
@@ -84,6 +91,8 @@
       max-width: calc(50vw - 60px)
       width: 460px
       padding: 16px 0
+      @media screen and ( max-width: $width-tab )
+        max-width: 100%
       .text
         &:first-child
           padding: 0 0 10px
