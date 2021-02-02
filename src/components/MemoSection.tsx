@@ -81,8 +81,8 @@ export default function MemoSection() {
              <div className="data-box">
                { post_data.map( (item,index) => {
                   return (
-                   <a href={'http://wwwdi.work?params='+item.view_params} target="_new">
-                      <div key={'item'+index} className="box">
+                   <a key={'item'+index} href={'http://wwwdi.work?params='+item.view_params} target="_new">
+                      <div className="box">
                         <div className="box__text">
                           <h3 className="title">{item.title.rendered}</h3>
                           <div className="text" dangerouslySetInnerHTML={{__html:item.content.rendered}} >

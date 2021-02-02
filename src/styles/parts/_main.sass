@@ -3,3 +3,20 @@
   position: absolute
   top: 0
   left: 0
+
+.memo-area
+  .box
+    position: relative
+    overflow: hidden
+    &:hover
+      .box
+        &__text
+          transform: translate(0%,0)
+    &__text
+      position: absolute
+      top: 0
+      left: 0
+      padding: 10px
+      transform: translate(-100%,0)
+      transition: transform 0.3s
+      background-color: rgba(0,0,0,0.6)
