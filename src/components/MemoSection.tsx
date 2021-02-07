@@ -12,7 +12,7 @@ export default function MemoSection() {
      const titles = el.current.querySelectorAll('.content__title')
      textFade(titles)
      fetachGetData()
-   },[])
+  },[])
 
    function textFade(titles){
      titles.forEach(element => {
@@ -31,16 +31,16 @@ export default function MemoSection() {
       method: 'GET',
       headers: {
        "Content-Type": "application/json; charset=utf-8",
+       "X-API-KEY":"39839f06-68cb-42dc-8b16-5c55d3f74822"
       },
-      credentials: 'same-origin',
       mode: "cors",
     }
 
-     const res = await fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader)
-     console.log()
+     const res = await fetch("https://nextfield.microcms.io/api/v1/maker",fetchGetHeader)
      if(res.status < 400){
       res.json().then( respose => {
-        setPostData(respose)
+        console.log(respose)
+        setPostData(respose.contents)
       } )
      }
    }
@@ -81,15 +81,17 @@ export default function MemoSection() {
              <div className="data-box">
                { post_data.map( (item,index) => {
                   return (
-                   <a key={'item'+index} href={'http://wwwdi.work?params='+item.view_params} target="_new">
+                   <a key={'item'+index} href={'http://wwwdi.work?params='+item.param} target="_new">
                       <div className="box">
-                        <div className="box__text">
-                          <h3 className="title">{item.title.rendered}</h3>
-                          <div className="text" dangerouslySetInnerHTML={{__html:item.content.rendered}} >
-                          </div>
+                        <div className="image-box">
+                          <figure>
+                            <img src={item.image.url} alt="" className="img"/>
+                          </figure>
                         </div>
-                        <div className="img-box">
-                          <img src={item.custom_fields} alt="" className="img"/>
+                        <div className="box__text">
+                          <h3 className="title">{item.title}</h3>
+                          <div className="text" dangerouslySetInnerHTML={{__html:item.content}} >
+                          </div>
                         </div>
                       </div>
                    </a>

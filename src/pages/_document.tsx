@@ -30,7 +30,6 @@ class CustomDocument extends Document implements CustomDocumentInteface {
           <meta name="description" content={this.description} />
           <meta name="og:title" content={this.title} />
           <meta name="og:url" content={this.url} />
-          <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         </Head>
         <BaseHeader title="re" />
         <Main />
