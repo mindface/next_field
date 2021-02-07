@@ -5,13 +5,15 @@ import OnLoadJs from "../on_load_js/base";
 export default function MemoSection() {
    const el = useRef(null)
    const [post_data,setPostData] = useState([])
+   const [repository_data,setRepositoryData] = useState([])
    
    useEffect(() => {
      const on_load_js = new OnLoadJs()
      on_load_js.init()
      const titles = el.current.querySelectorAll('.content__title')
      textFade(titles)
-     fetachGetData()
+     fetachGetData('maker')
+     fetachGetData('repositories')
   },[])
 
    function textFade(titles){
@@ -26,7 +28,7 @@ export default function MemoSection() {
      });
    }
 
-   async function fetachGetData(){
+   async function fetachGetData(rule){
     let fetchGetHeader:object = {
       method: 'GET',
       headers: {
@@ -36,39 +38,15 @@ export default function MemoSection() {
       mode: "cors",
     }
 
-     const res = await fetch("https://nextfield.microcms.io/api/v1/maker",fetchGetHeader)
+     const res = await fetch("https://nextfield.microcms.io/api/v1/"+rule,fetchGetHeader)
      if(res.status < 400){
       res.json().then( respose => {
-        console.log(respose)
-        setPostData(respose.contents)
+        if(rule==='maker') setPostData(respose.contents)
+        if(rule==='repositories') setRepositoryData(respose.contents)
+        
       } )
      }
    }
-
-   function _API_FETCH_() {
-    let fetchGetHeader:object = {
-      method: 'GET',
-      headers: {
-       "Content-Type": "application/json; charset=utf-8",
-      },
-      credentials: 'same-origin',
-      mode: "cors",
-    }
-  
-    return new Promise(function(resolve,reject){
-     fetch("http://wwwdi.work/beta/wp-json/wp/v2/photo05",fetchGetHeader).then((response) => {
-      return response.json()
-      })
-      .then((res) => {
-        resolve(res)
-      })
-      .catch((error) => {
-        console.log("error")
-        console.log(error)
-        reject(error)
-      })
-    })
-  }
 
    return (
      <>
@@ -102,15 +80,31 @@ export default function MemoSection() {
              </div>
            </div>
          </div>
-         <div className="l-section memo-area" id="section2">
+         <div className="l-section memo-area memo-area--repository" id="section2">
            <div className="content">
-           <h3 className="content__title">Framework and Library</h3>
-           <div className="content__text">利用したモジュールも含みます。</div>
+           <h3 className="content__title">make repositories</h3>
+           <div className="content__text"></div>
              <div className="data-box">
-               <div className="box">
-                  <h3 className="title">comming soon</h3>
-                  <div className="text">評価形成仮定</div>
-               </div>
+              { repository_data.map( (item,index) => {
+                return (
+                  <div key={'repository'+index} className="box">
+                      <h3 className="title">
+                        <a href={item.link} target="_new">{item.title}</a>
+                      </h3>
+                      <div className="text">カテゴリ</div>
+                      <div className="tag-box"
+                        dangerouslySetInnerHTML={{__html:item.category}} >
+ 
+                      </div>
+                      <div className="description">
+                        <div className="text"
+                        dangerouslySetInnerHTML={{__html:item.description}} >
+                        </div>
+                      </div>
+                  </div>  
+                  )
+                })
+              }         
              </div>
            </div>
          </div>

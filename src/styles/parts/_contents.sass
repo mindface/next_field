@@ -64,6 +64,19 @@
     font-size: 1.6rem
     line-height: 1.7
 
+.memo-area
+  &--repository
+    .box
+      padding: 10px
+      background-color: rgba(2, 0, 58,0.8)
+      &:nth-child(1n)
+        background-color: rgba(2, 0, 58,0.8)
+      &:nth-child(2n)
+        background-color: rgba(0, 61, 81, 0.8)
+      &:nth-child(3n)
+        background-color: rgba(58, 35, 0,0.8)
+        
+
 .about-section
   position: relative
   top: 50px
@@ -177,10 +190,25 @@
         code
           display: inline-block
           overflow-x: scroll
+      .tag
+        &-box
+          padding: 10px 0 0
+          h5
+            display: inline-block
+            margin: 0 10px 0 0
+            padding: 10px
+            background-color: $white_color
+            color: $base_dark_color
+            font-size: 1.6rem
+            line-height: 1
+          p
+            display: inline-block
+      .description
+        padding: 10px 0 0
       .image-box
         position: relative
-        width: 400px
-        height: 400px
+        width: 320px
+        height: 320px
         overflow: hidden
         .img
           position: absolute
