@@ -1,5 +1,4 @@
 import React , { useRef,useEffect } from 'react'
-import ThinkingPattern from "./module/ThinkingPattern";
 import Head from 'next/head'
 
 export default function ThinkSection() {
