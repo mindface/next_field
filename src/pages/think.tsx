@@ -3,9 +3,9 @@ import  { NextPage } from "next";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Layout from "../layout/index";
-import AboutSection from "../components/AboutSection";
+import ThinkSection from "../components/ThinkSection";
 
-const About:NextPage = () => {
+const Think:NextPage = () => {
   const transition = { duration: 0.5, ease: [0.43,0.13,0.23,0.96] }
   const variants = {
     inital: { scale: 0.9, opacity:0 },
@@ -26,11 +26,11 @@ const About:NextPage = () => {
             <title>Create Next App</title>
             <link rel="icon" href="/favicon.ico" />
           </Head>
-          <AboutSection />
+          <ThinkSection />
         </div>
       </motion.div>
     </Layout>
   );
 };
 
-export default About;
+export default Think;

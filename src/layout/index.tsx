@@ -1,14 +1,27 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
 import React, { ReactNode } from "react";
 import BaseNavi from '../components/BaseNavi'
 import { useRouter } from "next/router";
 import BackgroundRender from "../components/BackgroundRender";
+import "../styles/style.sass";
 
 type Props = {
   children?: ReactNode;
 };
 
 const Layout = ({ children }: Props) => {
+  const router = useRouter()
+
+  if(router.pathname === '/think'){
+    return (
+      <>
+        <div className="wrapper">
+          {children}
+        </div>
+        <BaseNavi />
+      </>
+    );
+  }
+
   return (
     <>
       <BackgroundRender />

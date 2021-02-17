@@ -1,4 +1,4 @@
-import React , { useRef,useState,useEffect } from 'react'
+import React , { useRef,useEffect } from 'react'
 import Base from "./module/Base";
 import { useRouter } from "next/router";
 

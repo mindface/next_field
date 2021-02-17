@@ -13,9 +13,9 @@ class CustomDocument extends Document implements CustomDocumentInteface {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
-  url = "http://example.com";
-  title = "Demo";
-  description = "Demo of Next.js";
+  url = "https://next-field.vercel.app";
+  title = "next-field";
+  description = "next-field for Next.js";
 
   componentDidMount(){
   }

@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import  { NextPage } from "next";
 import Head from "next/head";
-import "../styles/style.sass";
 import Layout from "../layout/index";
 import MemoSection from "../components/MemoSection";
 

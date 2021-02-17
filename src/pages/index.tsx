@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import  { NextPage } from "next";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import "../styles/style.sass";
 import Layout from "../layout/index";
 import MainSection from "../components/MainSection";
 
