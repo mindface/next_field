@@ -6,7 +6,6 @@ export default function ThinkSection() {
   const el = useRef(null)
 
   useEffect( ()=> {
-    let bg = new ThinkingPattern(el.current)
   },[])
 
    return (
