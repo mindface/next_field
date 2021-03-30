@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React , { useState,useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import Router from "next/router";
 
 const routeChange = () => {
@@ -12,14 +12,14 @@ const routeChange = () => {
   tempFix();
 };
 
-function handleExitComplete(){
-  if (typeof window !== 'undefined'){
-    window.scrollTo({ top:0 })
+function handleExitComplete() {
+  if (typeof window !== "undefined") {
+    window.scrollTo({ top: 0 });
   }
 }
 
-Router.events.on("routeChangeComplete", routeChange );
-Router.events.on("routeChangeStart", routeChange );
+Router.events.on("routeChangeComplete", routeChange);
+Router.events.on("routeChangeStart", routeChange);
 function BaseApp({ Component, pageProps }) {
   return (
     <>

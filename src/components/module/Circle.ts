@@ -1,28 +1,27 @@
-import * as THREE from "three"
-import gsap from "gsap"
+import * as THREE from "three";
+import gsap from "gsap";
 
 export default class Circle {
-  private readonly _scene: THREE.Scene
-  private readonly L_camera: any
-  private L_renderer: THREE.WebGLRenderer
+  private readonly _scene: THREE.Scene;
+  private readonly L_camera: any;
+  private L_renderer: THREE.WebGLRenderer;
 
-  private __width:number
-  private __height:number
-  private __uniforms:any
-  private __vertex:string
-  private __fragment:string
+  private __width: number;
+  private __height: number;
+  private __uniforms: any;
+  private __vertex: string;
+  private __fragment: string;
 
-  constructor(f_canvas:any){
-
+  constructor(f_canvas: any) {
     this.__vertex = `
     void main()	{
      gl_Position = vec4( position, 1.0 );
-    }`
+    }`;
 
-    let c_width = 500.0
+    let c_width = 500.0;
 
-    if(window.innerWidth > 1280){
-      c_width = 600.0
+    if (window.innerWidth > 1280) {
+      c_width = 600.0;
     }
 
     this.__fragment = `
@@ -44,59 +43,60 @@ export default class Circle {
 
       gl_FragColor += vec4(vec3(f),1.3);
 
-    }`
+    }`;
 
-    this.__width = window.innerWidth
-    this.__height = window.innerHeight
-    this._scene = new THREE.Scene()
+    this.__width = window.innerWidth;
+    this.__height = window.innerHeight;
+    this._scene = new THREE.Scene();
     // this.L_camera = new Camera()
-    this.L_camera = new THREE.PerspectiveCamera(45,this.__width / this.__height)
-    this.L_camera.position.set(0,10,1000)
-    this.L_renderer = new THREE.WebGLRenderer({canvas: f_canvas})
-    this.L_renderer.setPixelRatio(window.devicePixelRatio)
-    this.L_renderer.setSize(this.__width,this.__height)
+    this.L_camera = new THREE.PerspectiveCamera(
+      45,
+      this.__width / this.__height
+    );
+    this.L_camera.position.set(0, 10, 1000);
+    this.L_renderer = new THREE.WebGLRenderer({ canvas: f_canvas });
+    this.L_renderer.setPixelRatio(window.devicePixelRatio);
+    this.L_renderer.setSize(this.__width, this.__height);
 
     const geometry = new THREE.BoxGeometry(100, 100, 100);
     const material = new THREE.MeshBasicMaterial();
-    const mesh = new THREE.Mesh( geometry, material );
-    mesh.position.set(0,0,0)
-    mesh.rotation.set(10,10,10)
-    this._scene.add( mesh );
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(0, 0, 0);
+    mesh.rotation.set(10, 10, 10);
+    this._scene.add(mesh);
 
-    const geometry_ = new THREE.PlaneBufferGeometry( 2, 2 );
+    const geometry_ = new THREE.PlaneBufferGeometry(2, 2);
     this.__uniforms = {
-      time: { type:"f",value: 1.0 },
+      time: { type: "f", value: 1.0 },
       resolution: { type: "v2", value: new THREE.Vector2() },
-      mouse: { type: "v2", value: new THREE.Vector2() }
+      mouse: { type: "v2", value: new THREE.Vector2() },
     };
-    this.__uniforms['resolution']['value']['x'] = this.__width
-    this.__uniforms['resolution']['value']['y'] = this.__height
-    this._scene.fog = new THREE.Fog( 0x050505, 200, 1000 );
-    this._scene.add( new THREE.AmbientLight(0x050505) )
+    this.__uniforms["resolution"]["value"]["x"] = this.__width;
+    this.__uniforms["resolution"]["value"]["y"] = this.__height;
+    this._scene.fog = new THREE.Fog(0x050505, 200, 1000);
+    this._scene.add(new THREE.AmbientLight(0x050505));
 
-    const material_ = new THREE.ShaderMaterial( {
+    const material_ = new THREE.ShaderMaterial({
       uniforms: this.__uniforms,
       vertexShader: this.__vertex,
-      fragmentShader: this.__fragment
+      fragmentShader: this.__fragment,
     });
-    const mesh_ = new THREE.Mesh( geometry_, material_ );
-    this._scene.add( mesh_ );
+    const mesh_ = new THREE.Mesh(geometry_, material_);
+    this._scene.add(mesh_);
 
     this.render();
     this.loop();
-    
   }
 
- loop(){
-   this.render()
-   requestAnimationFrame(this.loop.bind(this))
- }
+  loop() {
+    this.render();
+    requestAnimationFrame(this.loop.bind(this));
+  }
 
- render(){
-      this.__uniforms[ 'time' ].value = performance.now() / 1000;
-      this.L_camera.updateProjectionMatrix()
-      // this.__renderer.setSize(this.__scene.fog.color,this._height_)
-      this.L_renderer.render(this._scene,this.L_camera)
- }
-
+  render() {
+    this.__uniforms["time"].value = performance.now() / 1000;
+    this.L_camera.updateProjectionMatrix();
+    // this.__renderer.setSize(this.__scene.fog.color,this._height_)
+    this.L_renderer.render(this._scene, this.L_camera);
+  }
 }

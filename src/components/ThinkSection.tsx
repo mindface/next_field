@@ -1,19 +1,17 @@
-import React , { useRef,useEffect } from 'react'
-import Head from 'next/head'
+import React, { useRef, useEffect } from "react";
+import Head from "next/head";
 
 export default function ThinkSection() {
-  const el = useRef(null)
+  const el = useRef(null);
 
-  useEffect( ()=> {
-  },[])
+  useEffect(() => {}, []);
 
-   return (
-     <section className="l-section think-section">
-       <Head>
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js"></script>
-       </Head>
-       <div className="canvas" ref={el} ></div>
-     </section>
-   )
+  return (
+    <section className="l-section think-section">
+      <Head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js"></script>
+      </Head>
+      <div className="canvas" ref={el}></div>
+    </section>
+  );
 }
-

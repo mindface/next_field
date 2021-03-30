@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 
-interface titleType{
-  title: string
+interface titleType {
+  title: string;
 }
 
 class BaseHeader extends React.Component<titleType> {
-  constructor(props:titleType){
-    super(props)
+  constructor(props: titleType) {
+    super(props);
     this.state = {
-      title: "BaseHeader"
-    }
+      title: "BaseHeader",
+    };
   }
 
   render() {
@@ -19,13 +19,11 @@ class BaseHeader extends React.Component<titleType> {
           <div className="logo">
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
           </div>
-          <h3 className="header__title">
-            {/* { this.props.title } */}
-          </h3>
+          <h3 className="header__title">{/* { this.props.title } */}</h3>
         </div>
       </header>
-    )
+    );
   }
 }
 
-export default BaseHeader
+export default BaseHeader;

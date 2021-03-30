@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import BaseNavi from '../components/BaseNavi'
+import BaseNavi from "../components/BaseNavi";
 import { useRouter } from "next/router";
 import BackgroundRender from "../components/BackgroundRender";
 import "../styles/style.sass";
@@ -9,14 +9,12 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
-  const router = useRouter()
+  const router = useRouter();
 
-  if(router.pathname === '/think'){
+  if (router.pathname === "/think") {
     return (
       <>
-        <div className="wrapper">
-          {children}
-        </div>
+        <div className="wrapper">{children}</div>
         <BaseNavi />
       </>
     );
@@ -25,9 +23,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <BackgroundRender />
-      <div className="wrapper">
-        {children}
-      </div>
+      <div className="wrapper">{children}</div>
       <BaseNavi />
     </>
   );

@@ -17,11 +17,9 @@ class CustomDocument extends Document implements CustomDocumentInteface {
   title = "next-field";
   description = "next-field for Next.js";
 
-  componentDidMount(){
-  }
-  
-  componentDidUpdate(){
-  }
+  componentDidMount() {}
+
+  componentDidUpdate() {}
 
   render(): JSX.Element {
     return (
