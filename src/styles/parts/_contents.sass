@@ -15,7 +15,6 @@
     line-height: 1.7
 
 .l-section
-  min-height: 100vh
 
 .bg-section
   position: relative
@@ -65,6 +64,7 @@
     line-height: 1.7
 
 .memo-area
+  min-height: 100vh
   &--repository
     .box
       padding: 10px
@@ -79,21 +79,27 @@
 
 .about-section
   position: relative
-  top: 50px
-  margin: 0 auto 0
+  top: 48px
+  max-height: calc(100vh - 48px)
   padding: 30px 40px 0
   color: $base_dark_color
-  &::before
-    content: ""
-    position: absolute
-    top: 0
-    left: 0
-    height: 100vh
-    max-width: 520px
-    width: 50vw
-    background-color: rgba(255,255,255,0.48)
-    @media screen and ( max-width: $width-tab )
-       width: 100vw
+  overflow-y: scroll
+  max-width: 50%
+  background-color: rgba(255,255,255,0.48)
+  @media screen and ( max-width: $width-tab )
+    max-width: 100%
+    width: 100vw
+    margin: 0 auto 0
+  // &::before
+  //   content: ""
+  //   position: absolute
+  //   top: 0
+  //   left: 0
+  //   height: 100%
+  //   max-width: 520px
+  //   width: 50vw
+  //   background-color: rgba(255,255,255,0.48)
+
       
   .info-box,
   .skill-box
@@ -153,7 +159,7 @@
   margin: 0 auto
   padding: 60px 0
   .l-section
-    height: 100vh
+    height: 100%
     padding: 10%
     -webkit-overflow-scrolling: touch
     scroll-snap-align: start

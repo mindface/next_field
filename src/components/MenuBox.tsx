@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import Circle from "./module/Circle";
+// import CircleCanvas from "./module/CircleCanvas";
+import InteractivePoints from "./module/InteractivePoints";
+
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
@@ -35,7 +37,10 @@ export default function MenuBox() {
   };
 
   useEffect(() => {
-    let bg = new Circle(el.current);
+    const hierarchy = new InteractivePoints({
+      f_canvas: el.current,
+    });
+    hierarchy.init();
   }, []);
 
   function switchBackground(pathName) {

@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
-export default class Circle {
+export default class CircleCanvas {
   private readonly _scene: THREE.Scene;
   private readonly L_camera: any;
   private L_renderer: THREE.WebGLRenderer;
