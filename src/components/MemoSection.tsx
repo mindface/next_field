@@ -63,10 +63,10 @@ export default function MemoSection() {
           <div className="content">
             <h3 className="content__title">Code data</h3>
             <div className="content__text">
-              以前検証した内容を記録しています。
+             comming soon
             </div>
             <div className="data-box">
-              { false && post_data.map((item, index) => {
+              {post_data.map((item, index) => {
                 return (
                   <a
                     key={"item" + index}
