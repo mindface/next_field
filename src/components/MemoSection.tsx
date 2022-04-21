@@ -66,7 +66,7 @@ export default function MemoSection() {
               以前検証した内容を記録しています。
             </div>
             <div className="data-box">
-              {post_data.map((item, index) => {
+              { false && post_data.map((item, index) => {
                 return (
                   <a
                     key={"item" + index}
