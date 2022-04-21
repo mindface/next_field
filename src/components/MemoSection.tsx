@@ -65,7 +65,7 @@ export default function MemoSection() {
             <div className="content__text">
              comming soon
             </div>
-            <div className="data-box">
+            {/* <div className="data-box">
               {post_data.map((item, index) => {
                 return (
                   <a
@@ -90,7 +90,7 @@ export default function MemoSection() {
                   </a>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </div>
         <div
