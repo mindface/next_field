@@ -22,9 +22,9 @@
     "three": "^0.124.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.22",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
     "eslint-config-prettier": "^7.2.0",
     "prettier": "^2.2.1",
     "typescript": "latest"
