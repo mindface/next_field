@@ -57,7 +57,6 @@ export default function MemoSection() {
 
   return (
     <>
-      <MemoSectionNavi />
       <div className="l-box memo-classter" ref={el}>
         <div className="l-section memo-area" id="section1">
           <div className="content">

@@ -68,7 +68,7 @@ export default function MenuBox() {
             whileTap={{ scale: 0.95 }}
             className="nenu-nav__item"
           >
-            <Link href="/" as="/">
+            <Link href="/" as="/" legacyBehavior>
               <a className="link">Home</a>
             </Link>
           </motion.li>
@@ -78,7 +78,7 @@ export default function MenuBox() {
             whileTap={{ scale: 0.95 }}
             className="nenu-nav__item"
           >
-            <Link href="/about" as="/about">
+            <Link href="/about" as="/about" legacyBehavior>
               <a className="link">About</a>
             </Link>
           </motion.li>
@@ -88,7 +88,7 @@ export default function MenuBox() {
             whileTap={{ scale: 0.95 }}
             className="nenu-nav__item"
           >
-            <Link href="/memo" as="/memo">
+            <Link href="/memo" as="/memo" legacyBehavior>
               <a className="link">Memo</a>
             </Link>
           </motion.li>

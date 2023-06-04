@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
+import "../styles/style.sass";
 
 const routeChange = () => {
   const tempFix = () => {

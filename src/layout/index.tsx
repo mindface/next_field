@@ -2,7 +2,6 @@ import React, { ReactNode } from "react";
 import BaseNavi from "../components/BaseNavi";
 import { useRouter } from "next/router";
 import BackgroundRender from "../components/BackgroundRender";
-import "../styles/style.sass";
 
 type Props = {
   children?: ReactNode;
