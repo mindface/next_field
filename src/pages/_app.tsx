@@ -1,4 +1,3 @@
-import { AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import "../styles/style.sass";
@@ -13,20 +12,12 @@ const routeChange = () => {
   tempFix();
 };
 
-function handleExitComplete() {
-  if (typeof window !== "undefined") {
-    window.scrollTo({ top: 0 });
-  }
-}
-
 Router.events.on("routeChangeComplete", routeChange);
 Router.events.on("routeChangeStart", routeChange);
 function BaseApp({ Component, pageProps }) {
   return (
     <>
-      <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-        <Component {...pageProps} />
-      </AnimatePresence>
+      <Component {...pageProps} />
     </>
   );
 }
