@@ -38,7 +38,7 @@ export default function MemoSection() {
       method: "GET",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        "X-API-KEY": "39839f06-68cb-42dc-8b16-5c55d3f74822",
+        "X-API-KEY": process.env.NEXT_PUBLIC_MICROAPI_KEY,
       },
       mode: "cors",
     };
