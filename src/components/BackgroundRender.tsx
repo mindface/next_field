@@ -12,8 +12,6 @@ export default function BackgroundRender() {
   // }, [router.pathname]);
 
   function switchBackground(pathName) {
-    console.log(pathName)
-    console.log("////-----")
     switch (pathName) {
       case "/":
         return 0;
@@ -27,7 +25,6 @@ export default function BackgroundRender() {
   }
 
   function switchBackgroundImage() {
-    console.log("////-----")
     switch (router.pathname) {
       case "/":
         return <img className="canvas" src="/sd_01.jpg" />;
@@ -36,7 +33,7 @@ export default function BackgroundRender() {
       case "/memo":
         return <img className="canvas" src="/sd_03.jpg" />;
       default:
-        return 0;
+        return <img className="canvas" src="/sd_01.jpg" />;
     }
   }
 
