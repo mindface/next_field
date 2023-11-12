@@ -15,7 +15,6 @@ function MemoSectionNavi() {
       <Link href="#section1" id="pagination1" data-id="1" legacyBehavior>
         @1
       </Link>
-   
     </nav>
   );
 }

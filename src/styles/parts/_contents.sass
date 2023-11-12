@@ -75,7 +75,15 @@
         background-color: rgba(0, 61, 81, 0.8)
       &:nth-child(3n)
         background-color: rgba(58, 35, 0,0.8)
-        
+
+.about-section-bg
+  position: absolute
+  top: 48px
+  right: 0
+  height: calc(100vh - 48px)
+  width: 50vw
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.3786108193277311) 29%, rgba(5,91,175,0.2441570378151261) 65%, rgba(0, 122, 146, 0.65) 100%)
+   
 
 .about-section
   position: relative
@@ -86,21 +94,11 @@
   color: $base_dark_color
   overflow-y: scroll
   max-width: 50%
-  background-color: rgba(255,255,255,0.48)
+  background-color: rgba(255,255,255,0.68)
   @media screen and ( max-width: $width-tab )
     max-width: 100%
     width: 100vw
     margin: 0 auto 0
-  // &::before
-  //   content: ""
-  //   position: absolute
-  //   top: 0
-  //   left: 0
-  //   height: 100%
-  //   max-width: 520px
-  //   width: 50vw
-  //   background-color: rgba(255,255,255,0.48)
-
       
   .info-box,
   .skill-box

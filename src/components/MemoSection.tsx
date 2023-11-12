@@ -58,6 +58,39 @@ export default function MemoSection() {
   return (
     <>
       <div className="l-box memo-classter" ref={el}>
+        <div
+          className="l-section memo-area memo-area--repository"
+          id="section2"
+        >
+          <div className="content">
+            <h3 className="content__title">make repositories</h3>
+            <div className="content__text"></div>
+            <div className="data-box">
+              {repository_data.map((item, index) => {
+                return (
+                  <div key={"repository" + index} className="box">
+                    <h3 className="title">
+                      <a href={item.link} target="_new">
+                        {item.title}
+                      </a>
+                    </h3>
+                    <div className="text">カテゴリ</div>
+                    <div
+                      className="tag-box"
+                      dangerouslySetInnerHTML={{ __html: item.category }}
+                    ></div>
+                    <div className="description">
+                      <div
+                        className="text"
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
         <div className="l-section memo-area" id="section1">
           <div className="content">
             <h3 className="content__title">Code data</h3>
@@ -90,39 +123,6 @@ export default function MemoSection() {
                 );
               })}
             </div> */}
-          </div>
-        </div>
-        <div
-          className="l-section memo-area memo-area--repository"
-          id="section2"
-        >
-          <div className="content">
-            <h3 className="content__title">make repositories</h3>
-            <div className="content__text"></div>
-            <div className="data-box">
-              {repository_data.map((item, index) => {
-                return (
-                  <div key={"repository" + index} className="box">
-                    <h3 className="title">
-                      <a href={item.link} target="_new">
-                        {item.title}
-                      </a>
-                    </h3>
-                    <div className="text">カテゴリ</div>
-                    <div
-                      className="tag-box"
-                      dangerouslySetInnerHTML={{ __html: item.category }}
-                    ></div>
-                    <div className="description">
-                      <div
-                        className="text"
-                        dangerouslySetInnerHTML={{ __html: item.description }}
-                      ></div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </div>
