@@ -6,9 +6,10 @@ export default function BackgroundRender() {
   const el = useRef(null);
   const router = useRouter();
 
-  useEffect(() => {
-    let bg = new Base(el.current, switchBackground(router.pathname));
-  }, []);
+  // useEffect(() => {
+    // three jsを利用したアニメーションが追加
+    // let bg = new Base(el.current, switchBackground(router.pathname));
+  // }, [router.pathname]);
 
   function switchBackground(pathName) {
     console.log(pathName)
@@ -25,9 +26,24 @@ export default function BackgroundRender() {
     }
   }
 
+  function switchBackgroundImage() {
+    console.log("////-----")
+    switch (router.pathname) {
+      case "/":
+        return <img className="canvas" src="/sd_01.jpg" />;
+      case "/about":
+        return <img className="canvas" src="/sd_02.jpg" />;
+      case "/memo":
+        return <img className="canvas" src="/sd_03.jpg" />;
+      default:
+        return 0;
+    }
+  }
+
   return (
     <section className="canvas-section bg-section">
-      <canvas id="can" className="canvas" ref={el}></canvas>
+      {/* <canvas id="can" className="canvas" ref={el}></canvas> */}
+      {switchBackgroundImage()}
     </section>
   );
 }
