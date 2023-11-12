@@ -11,16 +11,17 @@ export default function BackgroundRender() {
   }, []);
 
   function switchBackground(pathName) {
+    console.log(pathName)
+    console.log("////-----")
     switch (pathName) {
+      case "/":
+        return 0;
       case "/about":
         return 1;
-        break;
       case "/memo":
         return 2;
-        break;
       default:
         return 0;
-        break;
     }
   }
 
