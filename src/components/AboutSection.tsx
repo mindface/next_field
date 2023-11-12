@@ -10,7 +10,7 @@ export default function AboutSection() {
           <div className="sentence">
             <p className="text">Name | kamaguchi takanori</p>
             <p className="text">
-              エンジニアリングとデザインの価値を模索し続けています。
+              エンジニアリングとデザインの価値をケースに応じて模索し続けています。
             </p>
             <p className="text">
               ブラウザやアプリでのレンタリングプロセスから、目的に最適化された評価形成を目的にコード化しています。
@@ -25,8 +25,7 @@ export default function AboutSection() {
             <ul className="skill--list">
               <li className="skill__item">HTML</li>
               <li className="skill__item">CSS</li>
-              <li className="skill__item">javascript</li>
-              <li className="skill__item">Ajax</li>
+              <li className="skill__item">javascript(Ajax)</li>
               <li className="skill__item">Jquery</li>
               <li className="skill__item">Vue</li>
               <li className="skill__item">React</li>
