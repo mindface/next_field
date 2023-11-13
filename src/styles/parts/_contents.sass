@@ -14,7 +14,6 @@
     font-size: 1.6rem
     line-height: 1.7
 
-// .l-section
 
 .bg-section
   position: relative
@@ -87,27 +86,32 @@
 .back-image
   position: fixed
   z-index: 0
-  top: -48px
-  left: 0
-  right: 0
-  bottom: 0
-  margin: auto
+  top: 50%
+  left: 50%
+  max-width: 120%
+  transform: translate(-50%,-50%)
+  @media screen and ( max-width: $width-tab )
+    max-width: inherit
+    height: 100%
+  @media screen and ( max-width: $width-sp )
+    max-width: inherit
+    height: 100%
+
 
 .about-section
   position: relative
   top: 48px
-  // max-height: calc(100vh - 48px)
-  // height: 100vh
+  max-height: calc(100vh - 48px)
+  min-height: calc(100vh - 48px)
+  max-width: 50%
   padding: 30px 40px 0
   color: $base_dark_color
-  // overflow-y: scroll
-  max-width: 50%
   background-color: rgba(255,255,255,0.68)
+  overflow-y: scroll
   @media screen and ( max-width: $width-tab )
     max-width: 100%
     width: 100vw
     margin: 0 auto 0
-      
   .info-box,
   .skill-box
     // padding: 0 0 60px

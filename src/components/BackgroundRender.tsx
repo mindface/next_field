@@ -25,6 +25,8 @@ export default function BackgroundRender() {
   }
 
   function switchBackgroundImage() {
+    // const w = document.innerWidth;
+    // console.log(w)
     switch (router.pathname) {
       case "/":
         return <img className="back-image" src="/sd_01.png" />;
