@@ -83,16 +83,24 @@
   height: calc(100vh - 48px)
   width: 50vw
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.3786108193277311) 29%, rgba(5,91,175,0.2441570378151261) 65%, rgba(0, 122, 146, 0.65) 100%)
-   
+
+.back-image
+  position: fixed
+  z-index: 0
+  top: -48px
+  left: 0
+  right: 0
+  bottom: 0
+  margin: auto
 
 .about-section
   position: relative
   top: 48px
-  max-height: calc(100vh - 48px)
-  height: 100vh
+  // max-height: calc(100vh - 48px)
+  // height: 100vh
   padding: 30px 40px 0
   color: $base_dark_color
-  overflow-y: scroll
+  // overflow-y: scroll
   max-width: 50%
   background-color: rgba(255,255,255,0.68)
   @media screen and ( max-width: $width-tab )
@@ -102,7 +110,7 @@
       
   .info-box,
   .skill-box
-    padding: 0 0 60px
+    // padding: 0 0 60px
   .info-box
     position: relative
     .sentence

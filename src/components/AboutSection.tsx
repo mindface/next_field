@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 export default function AboutSection() {
   return (
     <>
-      <div className="about-section-bg"></div>
       <section className="l-section about-section">
         <div className="info-box">
           <h3 className="title">infomation</h3>
