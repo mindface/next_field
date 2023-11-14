@@ -23,9 +23,9 @@ export default function MemoSection() {
       let text_array = text.split("");
       text_array.map((text, index) => {
         putText +=
-          '<span class="l" style="animation-delay:' +
+          "<span class='l' style='animation-delay:" +
           index * 0.1 +
-          's" >' +
+          "s' >" +
           text +
           "</span>";
       });

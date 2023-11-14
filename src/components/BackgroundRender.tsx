@@ -1,15 +1,17 @@
-import React, { useRef, useEffect } from "react";
-import Base from "./module/Base";
+import React, { useRef, useState, useEffect } from "react";
+// import Base from "./module/Base";
 import { useRouter } from "next/router";
 
 export default function BackgroundRender() {
   const el = useRef(null);
   const router = useRouter();
+  const [pathName,pathNameSet] = useState('');
 
-  // useEffect(() => {
-  //   // three jsを利用したアニメーションが追加
-  //   new Base(el.current, switchBackground(router.pathname));
-  // }, [router.pathname]);
+  useEffect(() => {
+    // three jsを利用したアニメーション
+    // new Base(el.current, switchBackground(router.pathname));
+    switchBackgroundImage()
+  }, [])
 
   function switchBackground(pathName) {
     switch (pathName) {
@@ -25,26 +27,35 @@ export default function BackgroundRender() {
   }
 
   function switchBackgroundImage() {
-    // const w = document.innerWidth;
-    // console.log(w)
+    let pathSubName = ""
+    // sp対応のため
+    // if (typeof window !== 'undefined') {
+    //   const windowwidth = window.innerWidth;
+    //   console.log(windowwidth)
+    //   if ( windowwidth < 769) {
+    //     pathSubName = 'sp_'
+    //   }
+    // }
     switch (router.pathname) {
       case "/":
-        return <img className="back-image" src="/sd_01.png" />;
+        pathNameSet(`/sd_${pathSubName}01.png`)
       case "/about":
-        return <img className="back-image" src="/sd_02.png" />;
+        pathNameSet(`/sd_${pathSubName}01.png`)
       case "/memo":
-        return <img className="back-image" src="/sd_03.png" />;
+        pathNameSet("/sd_01.png")
       default:
-        return <img className="back-image" src="/sd_01.png" />;
+        pathNameSet(`/sd_${pathSubName}01.png`)
+        // return <img className="back-image" src="/sd_01.png" />;
     }
   }
 
+  // three jsを利用したアニメーション
   // return (
   //   <section className="canvas-section bg-section">
   //     <canvas id="can" className="canvas" ref={el}></canvas>
   //   </section>
   // )
   return (
-    switchBackgroundImage()
+    <img className="back-image" src={pathName} />
   )
 }
