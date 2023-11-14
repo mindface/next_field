@@ -11,7 +11,7 @@ export default function BackgroundRender() {
     // three jsを利用したアニメーション
     // new Base(el.current, switchBackground(router.pathname));
     switchBackgroundImage()
-  }, [])
+  }, [router.pathname])
 
   function switchBackground(pathName) {
     switch (pathName) {
@@ -27,8 +27,8 @@ export default function BackgroundRender() {
   }
 
   function switchBackgroundImage() {
-    let pathSubName = ""
-    // sp対応のため
+    // sp対応のケース
+    // let pathSubName = ""
     // if (typeof window !== 'undefined') {
     //   const windowwidth = window.innerWidth;
     //   console.log(windowwidth)
@@ -38,13 +38,17 @@ export default function BackgroundRender() {
     // }
     switch (router.pathname) {
       case "/":
-        pathNameSet(`/sd_${pathSubName}01.png`)
-      case "/about":
-        pathNameSet(`/sd_${pathSubName}01.png`)
-      case "/memo":
         pathNameSet("/sd_01.png")
+        break
+      case "/about":
+        pathNameSet("/sd_02.png")
+        break
+      case "/memo":
+        pathNameSet("/sd_03.png")
+        break
       default:
-        pathNameSet(`/sd_${pathSubName}01.png`)
+        pathNameSet(`/sd_01.png`)
+        break
         // return <img className="back-image" src="/sd_01.png" />;
     }
   }
@@ -56,6 +60,9 @@ export default function BackgroundRender() {
   //   </section>
   // )
   return (
-    <img className="back-image" src={pathName} />
+    <>
+      <img className="back-image" src={pathName} />
+      { pathName}
+    </>
   )
 }
