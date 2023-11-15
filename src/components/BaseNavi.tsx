@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Link from "next/link";
 import MenuBox from "./MenuBox";
 
 export default function BaseNavi() {
@@ -22,15 +21,6 @@ export default function BaseNavi() {
           </div>
           <nav className="nav">
             <ul className="nav--list _flex_">
-              {/* <li className="nav__item">
-              <Link href="/" as="/"><a className="link">Home</a></Link>
-            </li>
-            <li className="nav__item">
-              <Link href="/about" as="/about"><a className="link">About</a></Link>
-            </li>
-            <li className="nav__item">
-              <Link href="/memo" as="/memo"><a className="link">Memo</a></Link>
-            </li> */}
               <li className="nav__item">
                 <button
                   className={_switch ? "btn active" : "btn"}

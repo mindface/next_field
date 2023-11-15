@@ -23,7 +23,7 @@ export default function MenuBox() {
     open: {
       y: 0,
       opacity: 1,
-      transition: {
+      t6ransition: {
         y: { stiffness: 1000, velocity: -100 },
       },
     },
@@ -31,7 +31,7 @@ export default function MenuBox() {
       y: 50,
       opacity: 0,
       transition: {
-        y: { stiffness: 1000 },
+        y: { stiffness: 1000, velocity: -100 },
       },
     },
   };
@@ -42,20 +42,6 @@ export default function MenuBox() {
     });
     hierarchy.init();
   }, []);
-
-  function switchBackground(pathName) {
-    switch (pathName) {
-      case "/about":
-        return 1;
-        break;
-      case "/memo":
-        return 2;
-        break;
-      default:
-        return 0;
-        break;
-    }
-  }
 
   return (
     <section className="canvas-section menu-section _flex_c_">
