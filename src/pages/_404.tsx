@@ -21,7 +21,9 @@ class Error extends React.Component<Props> {
         <Head>
           <title>{this.props.title}</title>
         </Head>
-        {this.props.errorCode}
+        <div className="p-4">
+          {this.props.errorCode}
+        </div>
       </div>
     );
   }

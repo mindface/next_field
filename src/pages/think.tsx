@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { motion } from "framer-motion";

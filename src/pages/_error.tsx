@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Component } from "react";
 import { NextPageContext } from "next";
 import Head from "next/head";
 
@@ -7,7 +7,7 @@ type Props = {
   errorCode: number;
 };
 
-class Error extends React.Component<Props> {
+class Error extends Component<Props> {
   static async getInitialProps({ res }: NextPageContext): Promise<Props> {
     return {
       title: `Error ${res!.statusCode}`,
