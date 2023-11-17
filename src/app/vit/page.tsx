@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef, useEffect } from "react";
 import { NextPage } from "next";
 import { motion } from "framer-motion";
