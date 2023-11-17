@@ -38,17 +38,17 @@ export default function BackgroundRender() {
     // }
     switch (router.pathname) {
       case "/":
-        pathNameSet("/sd_01.png")
-        break
+        pathNameSet("/sd_01.png");
+        break;
       case "/about":
-        pathNameSet("/sd_02.png")
-        break
+        pathNameSet("/sd_02.png");
+        break;
       case "/memo":
-        pathNameSet("/sd_03.png")
-        break
+        pathNameSet("/sd_03.png");
+        break;
       default:
-        pathNameSet(`/sd_01.png`)
-        break
+        pathNameSet("/sd_01.png");
+        break;
         // return <img className="back-image" src="/sd_01.png" />;
     }
   }
