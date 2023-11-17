@@ -62,7 +62,6 @@ export default function BackgroundRender() {
   return (
     <>
       <img className="back-image" src={pathName} />
-      { pathName}
     </>
   )
 }
