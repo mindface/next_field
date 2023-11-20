@@ -95,7 +95,7 @@ export default function MemoSection() {
           <div className="content">
             <h3 className="content__title">Code data</h3>
             <div className="content__text">
-             comming soon
+             Comming Soon
             </div>
             {/* <div className="data-box">
               {post_data.map((item, index) => {
