@@ -1,19 +1,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 // import CircleCanvas from "./module/CircleCanvas";
 import InteractivePoints from "./module/InteractivePoints";
 
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
-type Props = {
-  onMenuBtnSwitch: () => void
-}
-
-export default function MenuBox(props: Props) {
-  const router = useRouter()
+export default function MenuBox() {
   const el = useRef(null);
-  const onMenuBtnSwitch = props.onMenuBtnSwitch ?? (() => {})
+  const router = useRouter();
 
   const variants = {
     open: {
@@ -60,7 +55,7 @@ export default function MenuBox(props: Props) {
             className="nenu-nav__item"
           >
             <Link href="/" as="/" legacyBehavior>
-              <a className="link" onClick={() => onMenuBtnSwitch()}>Home</a>
+              <a className="link">Home</a>
             </Link>
           </motion.li>
           <motion.li
@@ -70,7 +65,7 @@ export default function MenuBox(props: Props) {
             className="nenu-nav__item"
           >
             <Link href="/about" as="/about" legacyBehavior>
-              <a className="link" onClick={() => onMenuBtnSwitch()}>About</a>
+              <a className="link">About</a>
             </Link>
           </motion.li>
           <motion.li
@@ -80,7 +75,7 @@ export default function MenuBox(props: Props) {
             className="nenu-nav__item"
           >
             <Link href="/memo" as="/memo" legacyBehavior>
-              <a className="link" onClick={() => onMenuBtnSwitch()}>Memo</a>
+              <a className="link">Memo</a>
             </Link>
           </motion.li>
         </motion.ul>

@@ -1,19 +1,29 @@
 import React from "react";
-import BaseNavi from "../components/BaseNavi";
 
-function BaseHeader() {
+interface titleType {
+  title: string;
+}
 
-  return (
-    <header className="base-header">
-      <div className="header--body">
-        <div className="logo">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+class BaseHeader extends React.Component<titleType> {
+  constructor(props: titleType) {
+    super(props);
+    this.state = {
+      title: "BaseHeader",
+    };
+  }
+
+  render() {
+    return (
+      <header className="base-header">
+        <div className="header--body">
+          <div className="logo">
+            {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          </div>
+          <h3 className="header__title">{/* { this.props.title } */}</h3>
         </div>
-        <h3 className="header__title">{/* { this.props.title } */}</h3>
-        <BaseNavi />
-      </div>
-    </header>
-  );
+      </header>
+    );
+  }
 }
 
 export default BaseHeader;

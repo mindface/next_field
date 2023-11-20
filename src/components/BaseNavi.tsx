@@ -1,4 +1,3 @@
-"use client"
 import React, { useState } from "react";
 import MenuBox from "./MenuBox";
 
@@ -36,7 +35,7 @@ export default function BaseNavi() {
           </nav>
         </div>
       </header>
-      {_switch && <MenuBox onMenuBtnSwitch={menuBtnSwitch} />}
+      {_switch && <MenuBox />}
     </>
   );
 }
