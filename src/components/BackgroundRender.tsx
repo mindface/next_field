@@ -1,17 +1,18 @@
+"use client"
 import React, { useRef, useState, useEffect } from "react";
 // import Base from "./module/Base";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 export default function BackgroundRender() {
   const el = useRef(null);
-  const router = useRouter();
+  const _pathName = usePathname();
   const [pathName,pathNameSet] = useState('');
 
   useEffect(() => {
     // three jsを利用したアニメーション
     // new Base(el.current, switchBackground(router.pathname));
     switchBackgroundImage()
-  }, [router.pathname])
+  }, [_pathName])
 
   function switchBackground(pathName) {
     switch (pathName) {
@@ -36,7 +37,7 @@ export default function BackgroundRender() {
     //     pathSubName = 'sp_'
     //   }
     // }
-    switch (router.pathname) {
+    switch (_pathName) {
       case "/":
         pathNameSet("/sd_01.png");
         break;
