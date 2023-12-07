@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import NextImage from "next/image";
 // import Base from "./module/Base";
 import { useRouter } from "next/router";
 
@@ -6,11 +7,18 @@ export default function BackgroundRender() {
   const el = useRef(null);
   const router = useRouter();
   const [pathName,pathNameSet] = useState('');
+  const [imageWidth,imageWidthSet] = useState(0);
+  const [imageHeight,imageHeightSet] = useState(0);
 
   useEffect(() => {
     // three jsを利用したアニメーション
     // new Base(el.current, switchBackground(router.pathname));
-    switchBackgroundImage()
+    switchBackgroundImage();
+
+    imageWidthSet(window.innerWidth*2);
+    imageHeightSet(window.innerHeight);
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
   }, [router.pathname])
 
   function switchBackground(pathName) {
@@ -61,7 +69,16 @@ export default function BackgroundRender() {
   // )
   return (
     <>
-      <img className="back-image" src={pathName} />
+      <div className="back-image" style={{backgroundImage:`url(${pathName})`}}></div>
+      {/* 画像出力の違いを考えるためDOMの背景にしている */}
+      {/* <NextImage
+        className="back-image"
+        alt="背景画像"
+        src={`${pathName}`}
+        width={imageWidth}
+        height={imageHeight}
+        objectFit='contain'
+      /> */}
     </>
   )
 }
