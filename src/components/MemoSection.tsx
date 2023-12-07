@@ -74,7 +74,7 @@ export default function MemoSection() {
                         {item.title}
                       </a>
                     </h3>
-                    <div className="text">カテゴリ</div>
+                    <div className="text">カテゴリ-</div>
                     <div
                       className="tag-box"
                       dangerouslySetInnerHTML={{ __html: item.category }}
