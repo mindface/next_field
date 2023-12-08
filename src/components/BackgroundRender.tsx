@@ -15,10 +15,8 @@ export default function BackgroundRender() {
     // new Base(el.current, switchBackground(router.pathname));
     switchBackgroundImage();
 
-    imageWidthSet(window.innerWidth*2);
+    imageWidthSet(window.innerWidth);
     imageHeightSet(window.innerHeight);
-    console.log(window.innerWidth)
-    console.log(window.innerHeight)
   }, [router.pathname])
 
   function switchBackground(pathName) {
@@ -46,16 +44,16 @@ export default function BackgroundRender() {
     // }
     switch (router.pathname) {
       case "/":
-        pathNameSet("/sd_01.png");
+        pathNameSet("sd_01.png");
         break;
       case "/about":
-        pathNameSet("/sd_02.png");
+        pathNameSet("sd_02.png");
         break;
       case "/memo":
-        pathNameSet("/sd_03.png");
+        pathNameSet("sd_03.png");
         break;
       default:
-        pathNameSet("/sd_01.png");
+        pathNameSet("sd_01.png");
         break;
         // return <img className="back-image" src="/sd_01.png" />;
     }
@@ -69,16 +67,15 @@ export default function BackgroundRender() {
   // )
   return (
     <>
-      <div className="back-image" style={{backgroundImage:`url(${pathName})`}}></div>
-      {/* 画像出力の違いを考えるためDOMの背景にしている */}
-      {/* <NextImage
+      {/* cssでの調整するケース */}
+      {/* <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div> */}
+      <NextImage
         className="back-image"
         alt="背景画像"
-        src={`${pathName}`}
+        src={'/'+pathName}
         width={imageWidth}
         height={imageHeight}
-        objectFit='contain'
-      /> */}
+      />
     </>
   )
 }
