@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NextImage from "next/image";
 import MenuBox from "./MenuBox";
 
 export default function BaseNavi() {
@@ -17,7 +18,13 @@ export default function BaseNavi() {
       <header className="g-nav">
         <div className="header--nav _flex_s_b_">
           <div className="logo-box">
-            <img src="/logo.png" className="logo" alt="logo" />
+            <NextImage
+              src="/logo.png"
+              className="logo"
+              alt="visualizer"
+              width={180}
+              height={45}
+            />
           </div>
           <nav className="nav">
             <ul className="nav--list _flex_">
