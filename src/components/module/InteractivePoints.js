@@ -43,7 +43,7 @@ export default class InteractivePoints {
 
         vec4 mvPosition = modelViewMatrix * vec4( position, 0.8 );
 
-        gl_PointSize = size * ( 200.0 / -mvPosition.z );
+        gl_PointSize = size * ( 100.0 / -mvPosition.z );
 
         gl_Position = projectionMatrix * mvPosition;
 
@@ -170,33 +170,33 @@ export default class InteractivePoints {
       this.particles.rotation.y += 0.001;
       this.addCtxText(this.props.f_canvas);
 
-      // this.geometry = this.particles.geometry;
-      // const attributes = this.geometry.attributes;
+      this.geometry = this.particles.geometry;
+      const attributes = this.geometry.attributes;
 
-      // this.raycaster.setFromCamera( this.mouse, this.camera );
+      this.raycaster.setFromCamera( this.mouse, this.camera );
 
-      // this.intersects = this.raycaster.intersectObject( this.particles );
+      this.intersects = this.raycaster.intersectObject( this.particles );
 
-      // if ( this.intersects.length > 0 ) {
+      if ( this.intersects.length > 0 ) {
 
-      //   if ( this.INTERSECTED != this.intersects[ 0 ].index ) {
+        if ( this.INTERSECTED != this.intersects[ 0 ].index ) {
 
-      //     attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
+          attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
 
-      //     this.INTERSECTED = this.intersects[ 0 ].index;
+          this.INTERSECTED = this.intersects[ 0 ].index;
 
-      //     attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE * 1.25;
-      //     attributes.size.needsUpdate = true;
+          attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE * 1.25;
+          attributes.size.needsUpdate = true;
 
-      //   }
+        }
 
-      // } else if ( this.INTERSECTED !== null ) {
+      } else if ( this.INTERSECTED !== null ) {
 
-      //   attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
-      //   attributes.size.needsUpdate = true;
-      //   this.INTERSECTED = null;
+        attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
+        attributes.size.needsUpdate = true;
+        this.INTERSECTED = null;
 
-      // }
+      }
 
       this.renderer.render(this.scene, this.camera);
     };
@@ -206,8 +206,8 @@ export default class InteractivePoints {
   onWindowResize() {
     this.windowHalfX = window.innerWidth / 2;
     this.windowHalfY = window.innerHeight / 2;
-
-    this.camera.aspect = this.size.w / this.size.h;
+    const aspect = this.size.w / this.size.h;
+    this.camera.aspect = aspect ? aspect : 0;
     this.camera.updateProjectionMatrix();
 
     renderer.setSize(this.size.w, this.size.h);
