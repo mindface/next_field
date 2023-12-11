@@ -207,7 +207,9 @@ export default class InteractivePoints {
     this.windowHalfX = window.innerWidth / 2;
     this.windowHalfY = window.innerHeight / 2;
 
-    this.camera.aspect = (this.size.w ?? 0) / (this.size.h ?? 0);
+    const aspect = this.size.w / this.size.h;
+    this.camera.aspect = aspect ? aspect : 0;
+
     this.camera.updateProjectionMatrix();
 
     renderer.setSize(this.size.w, this.size.h);

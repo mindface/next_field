@@ -68,14 +68,14 @@ export default function BackgroundRender() {
   return (
     <>
       {/* cssでの調整するケース */}
-      {/* <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div> */}
-      <NextImage
+      <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div>
+      {/* <NextImage
         className="back-image"
         alt="背景画像"
         src={'/'+pathName}
         width={imageWidth}
         height={imageHeight}
-      />
+      /> */}
     </>
   )
 }
