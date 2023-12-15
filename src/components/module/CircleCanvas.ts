@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import gsap from "gsap";
 
 export default class Circle {
   private readonly _scene: THREE.Scene;

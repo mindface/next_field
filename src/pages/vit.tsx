@@ -6,7 +6,7 @@ import Layout from "../layout/index";
 import { initVit } from "../on_load_js/vit";
 
 const Vit: NextPage = () => {
-  const canvas = useRef()
+  const canvas = useRef();
   let counter = 0;
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Vit: NextPage = () => {
         }}
         transition={{ duration: 1 }}
       >
-        <div className="index">
+        <div className="vit">
           <Head>
             <title>vit page</title>
             <link rel="icon" href="/favicon.ico" />
