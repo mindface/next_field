@@ -55,7 +55,6 @@ export function initVit(canvas) {
   }
 
   const draw = () => {
-    // launchPixel();
     launchPixel();
     drawGrid();
 

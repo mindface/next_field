@@ -1,17 +1,16 @@
 import React, { useRef, useEffect } from "react";
-import Head from "next/head";
+import { initParticle } from "../on_load_js/think";
 
 export default function ThinkSection() {
-  const el = useRef(null);
+  const canvas = useRef(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    initParticle(canvas.current);
+  },[]);
 
   return (
     <section className="l-section think-section">
-      <Head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.js"></script>
-      </Head>
-      <div className="canvas" ref={el}></div>
+      <canvas className="canvas" id="canvas" ref={canvas}></canvas>
     </section>
   );
 }

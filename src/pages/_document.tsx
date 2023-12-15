@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import BaseHeader from "../components/BaseHeader";
 import BaseFooter from "../components/BaseFooter";
 
 interface CustomDocumentInteface {
@@ -29,7 +28,6 @@ class CustomDocument extends Document implements CustomDocumentInteface {
           <meta name="og:title" content={this.title} />
           <meta name="og:url" content={this.url} />
         </Head>
-        <BaseHeader title="re" />
         <Main />
         <NextScript />
         <BaseFooter title="&copy; visualizer" />

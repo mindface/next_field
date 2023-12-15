@@ -52,6 +52,9 @@ export default function BackgroundRender() {
       case "/memo":
         pathNameSet("sd_03.png");
         break;
+      case "/think":
+        pathNameSet("sd_04.png");
+        break;
       default:
         pathNameSet("sd_01.png");
         break;
@@ -67,7 +70,7 @@ export default function BackgroundRender() {
   // )
   return (
     <>
-      {/* cssでの調整するケース */}
+      {/* cssでの調整するケース */}00
       <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div>
       {/* <NextImage
         className="back-image"

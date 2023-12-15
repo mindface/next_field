@@ -16,7 +16,7 @@ const About: NextPage = () => {
         }}
         transition={{ duration: 1 }}
       >
-        <div className="index">
+        <div className="about">
           <Head>
             <title>about page</title>
             <link rel="icon" href="/favicon.ico" />

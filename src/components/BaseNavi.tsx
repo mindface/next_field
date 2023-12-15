@@ -24,6 +24,7 @@ export default function BaseNavi() {
               alt="visualizer"
               width={180}
               height={45}
+              priority
             />
           </div>
           <nav className="nav">

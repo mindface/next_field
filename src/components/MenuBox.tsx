@@ -3,12 +3,10 @@ import Link from "next/link";
 // import CircleCanvas from "./module/CircleCanvas";
 import InteractivePoints from "./module/InteractivePoints";
 
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
 export default function MenuBox() {
   const el = useRef(null);
-  const router = useRouter();
 
   const variants = {
     open: {

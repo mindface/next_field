@@ -10,15 +10,6 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const router = useRouter();
 
-  if (router.pathname === "/think") {
-    return (
-      <>
-        <div className="wrapper">{children}</div>
-        <BaseNavi />
-      </>
-    );
-  }
-
   return (
     <>
       <BackgroundRender />
