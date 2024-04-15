@@ -143,7 +143,7 @@ export default class InteractivePoints {
     this.renderer.setSize(this.size.w, this.size.h);
 
     document.addEventListener("mousemove", this.onDocumentMouseMove, false);
-    window.addEventListener("resize", this.onWindowResize, false);
+    // window.addEventListener("resize", this.onWindowResize, false);
 
     const render = () => {
       requestAnimationFrame(render);
@@ -206,7 +206,7 @@ export default class InteractivePoints {
   onWindowResize() {
     this.windowHalfX = window.innerWidth / 2;
     this.windowHalfY = window.innerHeight / 2;
-    const aspect = this.size.w / this.size.h;
+    const aspect = (this.size.w ? this.size.w : 0) / this.size.h;
     this.camera.aspect = aspect ? aspect : 0;
     this.camera.updateProjectionMatrix();
 
