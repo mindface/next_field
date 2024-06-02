@@ -58,6 +58,12 @@
     font-size: 4rem
     writing-mode: vertical-lr
     line-height: 0.6
+    @include textEffectAnimation(2.7)
+    .item
+      opacity: 0
+      @for $i from 1 through 22
+        &:nth-child(#{$i})
+          @include textFadeAnimation(#{$i*0.1})
   .text
     font-size: 1.6rem
     line-height: 1.7
