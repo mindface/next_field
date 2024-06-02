@@ -5,6 +5,7 @@
   transform: translate(0,10px) translate3d(90px,90px,90px)
   animation: textAnimation__ 0.3s ease 0.3s forwards
 
+
 @keyframes textAnimation__
   0%
     opacity: 0
@@ -12,12 +13,41 @@
   100%
     opacity: 1
     transform: translate(0,0px) translate3d(0px,0px,0px)
-    
+
+
+@mixin textFadeAnimation($delay:0)
+  display: inline-block
+  opacity: 0
+  transform: translate(0,10px) translate3d(60px,60px,60px)
+  animation: textFadeAnimation__ 0.3s ease #{$delay}s both
+
+
+@keyframes textFadeAnimation__
+  0%
+    opacity: 0
+    transform: translate(0,10px) translate3d(60px,60px,60px)
+  100%
+    opacity: 1
+    transform: translate(0,0px) translate3d(0px,0px,0px)
+
+
+@mixin textEffectAnimation($delay:0)
+  animation: textEffectAnimation__ 0.3s ease #{$delay}s both
+
+
+@keyframes textEffectAnimation__
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)
+
 
 @mixin scaleAnimation()
   transform: scale(0)
   animation: textAnimation__ 0.3s ease 0.3s forwards
-  
+
 
 @keyframes scaleAnimation__
   0%
@@ -28,7 +58,7 @@
 @mixin fadeAnimation()
   opacity: 0
   animation: fadeAnimation__ 0.3s ease 0.3s forwards
-  
+
 
 @keyframes fadeAnimation__
   0%

@@ -28,6 +28,7 @@ export default function AboutSection() {
               <li className="skill__item">Jquery</li>
               <li className="skill__item">Vue</li>
               <li className="skill__item">React</li>
+              <li className="skill__item">typescript</li>
             </ul>
           </div>
           <div className="box _flex_">
