@@ -1,8 +1,8 @@
+"use client"
 import React from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Layout from "../layout/index";
 import MainSection from "../components/MainSection";
 
 const Home: NextPage = () => {
@@ -17,26 +17,24 @@ const Home: NextPage = () => {
     },
   };
   return (
-    <Layout>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transitionEnd: {
           opacity: 1,
-          transitionEnd: {
-            opacity: 1,
-          },
-        }}
-        transition={{ duration: 1 }}
-      >
-        <div className="index">
-          <Head>
-            <title>home page</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-          <MainSection />
-        </div>
-      </motion.div>
-    </Layout>
+        },
+      }}
+      transition={{ duration: 1 }}
+    >
+      <div className="index">
+        <Head>
+          <title>home page</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <MainSection />
+      </div>
+    </motion.div>
   );
 };
 

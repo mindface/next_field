@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "eslint-config-next": "latest",
     "framer-motion": "^3.2.1",
     "gsap": "^3.6.0",
     "next": "latest",

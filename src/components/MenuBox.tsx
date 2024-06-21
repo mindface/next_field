@@ -5,8 +5,13 @@ import InteractivePoints from "./module/InteractivePoints";
 
 import { motion } from "framer-motion";
 
-export default function MenuBox() {
+type Props = {
+  menuAction?: () => void
+}
+
+export default function MenuBox(props: Props) {
   const el = useRef(null);
+  const menuAction = props.menuAction ?? (() => {});
 
   const variants = {
     open: {
@@ -53,7 +58,7 @@ export default function MenuBox() {
             className="nenu-nav__item"
           >
             <Link href="/" as="/" legacyBehavior>
-              <a className="link">Home</a>
+              <a className="link" onClick={menuAction}>Home</a>
             </Link>
           </motion.li>
           <motion.li
@@ -63,7 +68,7 @@ export default function MenuBox() {
             className="nenu-nav__item"
           >
             <Link href="/about" as="/about" legacyBehavior>
-              <a className="link">About</a>
+              <a className="link" onClick={menuAction}>About</a>
             </Link>
           </motion.li>
           <motion.li
@@ -73,7 +78,7 @@ export default function MenuBox() {
             className="nenu-nav__item"
           >
             <Link href="/memo" as="/memo" legacyBehavior>
-              <a className="link">Memo</a>
+              <a className="link" onClick={menuAction}>Memo</a>
             </Link>
           </motion.li>
         </motion.ul>

@@ -1,11 +1,13 @@
+"use client"
 import React, { useRef, useState, useEffect } from "react";
 import NextImage from "next/image";
 // import Base from "./module/Base";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function BackgroundRender() {
   const el = useRef(null);
   const router = useRouter();
+  const pathname = usePathname();
   const [pathName,pathNameSet] = useState('');
   const [imageWidth,imageWidthSet] = useState(0);
   const [imageHeight,imageHeightSet] = useState(0);
@@ -17,7 +19,7 @@ export default function BackgroundRender() {
 
     imageWidthSet(window.innerWidth);
     imageHeightSet(window.innerHeight);
-  }, [router.pathname])
+  }, [pathname])
 
   function switchBackground(pathName) {
     switch (pathName) {
@@ -42,7 +44,7 @@ export default function BackgroundRender() {
     //     pathSubName = 'sp_'
     //   }
     // }
-    switch (router.pathname) {
+    switch (pathname) {
       case "/":
         pathNameSet("sd_01.png");
         break;
@@ -70,7 +72,7 @@ export default function BackgroundRender() {
   // )
   return (
     <>
-      {/* cssでの調整するケース */}00
+      {/* cssでの調整するケース */}
       <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div>
       {/* <NextImage
         className="back-image"

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function MainSection() {
-  useEffect(() => {}, []);
 
   return (
     <section className="l-section main-section">
