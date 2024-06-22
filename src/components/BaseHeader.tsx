@@ -12,5 +12,5 @@ export default function BaseHeader(props: Props) {
         <h3 className="header__title">{/* { props.title } */}</h3>
       </div>
     </header>
-  )
+  );
 }

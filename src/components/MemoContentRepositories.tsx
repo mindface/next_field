@@ -3,13 +3,13 @@ type repositoryItem = {
   category: string;
   description: string;
   link: string;
-}
+};
 
 type Props = {
   repositoryList: repositoryItem[];
-}
+};
 
-export default function MemoSection(props: Props) {
+export default function MemoContentRepositories(props: Props) {
   const repository_data = props.repositoryList ?? [];
 
   return (

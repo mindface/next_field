@@ -1,5 +1,5 @@
-"use client"
-import React, { useRef, useState, useEffect } from "react";
+"use client";
+import { useRef, useState, useEffect } from "react";
 import NextImage from "next/image";
 // import Base from "./module/Base";
 import { useRouter, usePathname } from "next/navigation";
@@ -8,9 +8,9 @@ export default function BackgroundRender() {
   const el = useRef(null);
   const router = useRouter();
   const pathname = usePathname();
-  const [pathName,pathNameSet] = useState('');
-  const [imageWidth,imageWidthSet] = useState(0);
-  const [imageHeight,imageHeightSet] = useState(0);
+  const [pathName, pathNameSet] = useState("");
+  const [imageWidth, imageWidthSet] = useState(0);
+  const [imageHeight, imageHeightSet] = useState(0);
 
   useEffect(() => {
     // three jsを利用したアニメーション
@@ -19,7 +19,7 @@ export default function BackgroundRender() {
 
     imageWidthSet(window.innerWidth);
     imageHeightSet(window.innerHeight);
-  }, [pathname])
+  }, [pathname]);
 
   function switchBackground(pathName) {
     switch (pathName) {
@@ -60,7 +60,7 @@ export default function BackgroundRender() {
       default:
         pathNameSet("sd_01.png");
         break;
-        // return <img className="back-image" src="/sd_01.png" />;
+      // return <img className="back-image" src="/sd_01.png" />;
     }
   }
 
@@ -73,7 +73,10 @@ export default function BackgroundRender() {
   return (
     <>
       {/* cssでの調整するケース */}
-      <div className="back-image" style={{backgroundImage:`url(/${pathName})`}}></div>
+      <div
+        className="back-image"
+        style={{ backgroundImage: `url(/${pathName})` }}
+      ></div>
       {/* <NextImage
         className="back-image"
         alt="背景画像"
@@ -82,5 +85,5 @@ export default function BackgroundRender() {
         height={imageHeight}
       /> */}
     </>
-  )
+  );
 }

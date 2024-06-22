@@ -1,10 +1,9 @@
-import * as React from "react";
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "next-field 404",
   description: "not fund!",
-}
+};
 
 const NotFound = () => {
   return (
@@ -14,6 +13,6 @@ const NotFound = () => {
       </div>
     </div>
   );
-}
+};
 
 export default NotFound;

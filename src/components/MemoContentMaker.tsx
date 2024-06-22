@@ -1,22 +1,21 @@
-"use client"
-import React, { useState, useRef, useEffect } from "react";
+"use client";
+import { useState, useRef, useEffect } from "react";
 // import MemoSectionNavi from "./MemoSectionNavi";
 import OnLoadJs from "../on_load_js/base";
 import { client } from "../libs/microcms.client";
 
-export default function MemoSection() {
+export default function MemoContentMaker() {
   const el = useRef(null);
   const [post_data, setPostData] = useState([]);
   const [repository_data, setRepositoryData] = useState([]);
 
-  useEffect(() => {
+  // useEffect(() => {
     // const on_load_js = new OnLoadJs();
     // on_load_js.init();
     // const titles = el.current.querySelectorAll(".content__title");
     // textFade(titles);
     // fetachGetData("maker");
-    fetachGetData("repositories");
-  }, []);
+  // }, []);
 
   function textFade(titles) {
     titles.forEach((element) => {
@@ -37,18 +36,15 @@ export default function MemoSection() {
 
   async function fetachGetData(rule) {
     const data = await client.get({
-      endpoint: "repositories",
+      endpoint: rule,
     });
     if (rule === "maker") setPostData(data.contents);
-    if (rule === "repositories") setRepositoryData(data.contents);
   }
 
   return (
     <div className="content" ref={el}>
       <h3 className="content__title">Code data</h3>
-      <div className="content__text">
-        Comming Soon
-      </div>
+      <div className="content__text">Comming Soon</div>
       {/* <div className="data-box">
         {post_data.map((item, index) => {
           return (

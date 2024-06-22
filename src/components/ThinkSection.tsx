@@ -1,5 +1,5 @@
-"use client"
-import React, { useRef, useEffect } from "react";
+"use client";
+import { useRef, useEffect } from "react";
 import { initParticle } from "../on_load_js/think";
 
 export default function ThinkSection() {
@@ -7,7 +7,7 @@ export default function ThinkSection() {
 
   useEffect(() => {
     initParticle(canvas.current);
-  },[]);
+  }, []);
 
   return (
     <section className="l-section think-section">

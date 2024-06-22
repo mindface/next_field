@@ -1,11 +1,10 @@
-import React from "react";
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import MainSection from "../components/MainSection";
 
 export const metadata: Metadata = {
   title: "next-field Home",
   description: "next-field for Next.js",
-}
+};
 
 const Home = () => {
   return (

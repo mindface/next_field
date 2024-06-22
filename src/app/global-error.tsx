@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
-const GlobalError = ({ error, reset }: { error: Error, reset: () => void }) => {
-
+const GlobalError = ({ error, reset }: { error: Error; reset: () => void }) => {
   return (
     <div>
       {error.message}
@@ -9,6 +8,6 @@ const GlobalError = ({ error, reset }: { error: Error, reset: () => void }) => {
       <button onClick={() => reset()}>再レンダリング</button>
     </div>
   );
-}
+};
 
 export default GlobalError;

@@ -1,4 +1,3 @@
-import React from "react";
 import { client } from "../libs/microcms.client";
 import MemoContentRepositories from "./MemoContentRepositories";
 import MemoContentMaker from "./MemoContentMaker";
@@ -8,7 +7,7 @@ const getStaticPostList = async () => {
     endpoint: "repositories",
   });
   return repositoryData.contents;
-}
+};
 
 export default async function MemoSection() {
   const postContents = await getStaticPostList();

@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 // import CircleCanvas from "./module/CircleCanvas";
 import InteractivePoints from "./module/InteractivePoints";
 
 type Props = {
-  menuAction?: () => void
-}
+  menuAction?: () => void;
+};
 
 export default function MenuBox(props: Props) {
   const el = useRef(null);
@@ -23,13 +23,19 @@ export default function MenuBox(props: Props) {
       <canvas id="menu" className="canvas" ref={el}></canvas>
       <nav className="nenu-nav">
         <Link href="/" as="/" legacyBehavior>
-          <a className="link" onClick={menuAction}>Home</a>
+          <a className="link" onClick={menuAction}>
+            Home
+          </a>
         </Link>
         <Link href="/about" as="/about" legacyBehavior>
-          <a className="link" onClick={menuAction}>About</a>
+          <a className="link" onClick={menuAction}>
+            About
+          </a>
         </Link>
         <Link href="/memo" as="/memo" legacyBehavior>
-          <a className="link" onClick={menuAction}>Memo</a>
+          <a className="link" onClick={menuAction}>
+            Memo
+          </a>
         </Link>
       </nav>
     </section>

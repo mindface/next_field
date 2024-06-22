@@ -1,11 +1,10 @@
-import React from "react";
-import type { Metadata } from 'next'
+import type { Metadata } from "next";
 import AboutSection from "../../components/AboutSection";
 
 export const metadata: Metadata = {
   title: "next-field About",
   description: "next-field for Next.js",
-}
+};
 
 const About = () => {
   return (
