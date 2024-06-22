@@ -15,7 +15,7 @@
 # production
 /build
 /.yarn
-/.yarn/install-state.gz
+.yarn/install-state.gz
 
 # misc
 .DS_Store
