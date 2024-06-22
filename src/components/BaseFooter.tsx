@@ -4,7 +4,7 @@ interface Props {
   title: string;
 }
 
-function BaseFooter(props: Props) {
+export default function BaseFooter(props: Props) {
   const {title} = props;
 
   return (
@@ -14,6 +14,4 @@ function BaseFooter(props: Props) {
       </div>
     </footer>
   );
-}
-
-export default BaseFooter;
+};

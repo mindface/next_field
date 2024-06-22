@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function MemoSectionNavi() {
+export default function MemoSectionNavi() {
   const list = [
     { id:"1", name: "section1" },
     { id:"2", name: "section2" },
@@ -18,5 +18,3 @@ function MemoSectionNavi() {
     </nav>
   );
 }
-
-export default MemoSectionNavi

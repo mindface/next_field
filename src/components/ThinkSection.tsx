@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef, useEffect } from "react";
 import { initParticle } from "../on_load_js/think";
 
