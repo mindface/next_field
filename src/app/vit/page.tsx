@@ -1,10 +1,10 @@
+"use client"
 import React, { useRef, useEffect } from "react";
-import { NextPage } from "next";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { initVit } from "../../on_load_js/vit";
 
-const Vit: NextPage = () => {
+const Vit = () => {
   const canvas = useRef();
 
   useEffect(() => {

@@ -1,11 +1,10 @@
 "use client"
 import React from "react";
-import { NextPage } from "next";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import MemoSection from "../../components/MemoSection";
 
-const Memo: NextPage = () => {
+const Memo = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

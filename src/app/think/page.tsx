@@ -1,10 +1,10 @@
+"use client"
 import React from "react";
-import { NextPage } from "next";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import ThinkSection from "../../components/ThinkSection";
 
-const Think: NextPage = () => {
+const Think = () => {
   const transition = { duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] };
   return (
     <motion.div
