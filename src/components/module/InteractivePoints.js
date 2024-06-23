@@ -173,29 +173,23 @@ export default class InteractivePoints {
       this.geometry = this.particles.geometry;
       const attributes = this.geometry.attributes;
 
-      this.raycaster.setFromCamera( this.mouse, this.camera );
+      this.raycaster.setFromCamera(this.mouse, this.camera);
 
-      this.intersects = this.raycaster.intersectObject( this.particles );
+      this.intersects = this.raycaster.intersectObject(this.particles);
 
-      if ( this.intersects.length > 0 ) {
+      if (this.intersects.length > 0) {
+        if (this.INTERSECTED != this.intersects[0].index) {
+          attributes.size.array[this.INTERSECTED] = this.PARTICLE_SIZE;
 
-        if ( this.INTERSECTED != this.intersects[ 0 ].index ) {
+          this.INTERSECTED = this.intersects[0].index;
 
-          attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
-
-          this.INTERSECTED = this.intersects[ 0 ].index;
-
-          attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE * 1.25;
+          attributes.size.array[this.INTERSECTED] = this.PARTICLE_SIZE * 1.25;
           attributes.size.needsUpdate = true;
-
         }
-
-      } else if ( this.INTERSECTED !== null ) {
-
-        attributes.size.array[ this.INTERSECTED ] = this.PARTICLE_SIZE;
+      } else if (this.INTERSECTED !== null) {
+        attributes.size.array[this.INTERSECTED] = this.PARTICLE_SIZE;
         attributes.size.needsUpdate = true;
         this.INTERSECTED = null;
-
       }
 
       this.renderer.render(this.scene, this.camera);

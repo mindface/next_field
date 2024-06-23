@@ -97,7 +97,9 @@ export default class OnLoadJs {
         currentActiveIndex.classList.remove("active");
       }
       const newActiveIndex = document.querySelector(`a[href='#${element.id}']`);
-      newActiveIndex.classList.add("active");
+      if (newActiveIndex !== null) {
+        newActiveIndex.classList.add("active");
+      }
       const addClassElement = document.getElementById(
         "section" + newActiveIndex.dataset.id
       );

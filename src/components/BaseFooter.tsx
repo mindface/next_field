@@ -1,11 +1,9 @@
-import React from "react";
-
 interface Props {
   title: string;
 }
 
-function BaseFooter(props: Props) {
-  const {title} = props;
+export default function BaseFooter(props: Props) {
+  const { title } = props;
 
   return (
     <footer className="base-footer">
@@ -15,5 +13,3 @@ function BaseFooter(props: Props) {
     </footer>
   );
 }
-
-export default BaseFooter;

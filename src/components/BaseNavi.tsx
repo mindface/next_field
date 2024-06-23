@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 import NextImage from "next/image";
 import MenuBox from "./MenuBox";
 
@@ -43,7 +44,13 @@ export default function BaseNavi() {
           </nav>
         </div>
       </header>
-      {_switch && <MenuBox />}
+      {_switch && (
+        <MenuBox
+          menuAction={() => {
+            _setSwitch(!_switch);
+          }}
+        />
+      )}
     </>
   );
 }

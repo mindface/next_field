@@ -62,8 +62,10 @@
 .nenu-nav
   position: relative
   padding: 0 0 30px
-  &__item
-    .link
-      display: inline-block
-      font-size: 2.6rem
-      color: $white_color
+  .link
+    display: block
+    font-size: 2.6rem
+    color: $white_color
+    &:hover
+      @include textEffectAnimation()
+
