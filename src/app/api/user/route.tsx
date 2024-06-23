@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export default (req: NextRequest, res: NextResponse) => {
-  return NextResponse.json({ name: "John Doe" });
+export async function GET(req: NextRequest, res: NextResponse) {
+  try {
+    return NextResponse.json({ name: "John Doe" });
+  } catch (error) {
+    throw error;
+  }
 };
