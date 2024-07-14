@@ -236,6 +236,51 @@
           max-width: auto
           margin: auto
 
+.contact-section
+  max-width: 640px
+  width: 100%
+  margin: 0 auto
+  padding: 60px 0
+  &.l-section
+    -webkit-overflow-scrolling: touch
+    scroll-snap-align: start
+  .content
+    &__title
+      padding: 20px 0
+      font-size: 3.6rem
+    &__form
+      &--item
+        padding: 10px 0
+      &__caution
+        text-align: right
+        color: $red_color
+  [type="text"],
+  [type="email"],
+  .textarea
+    width: 100%
+    max-height: 120px
+    padding: 10px
+    border: none
+    box-shadow: 0 0 0 1px $base_dark_color inset
+  .textarea
+    min-height: 220px
+  .label
+    padding: 0 0 10px
+    display: inline-block
+    font-size: 1.6rem
+    &::after
+      content: "*"
+      color: $red_color
+  .button
+    margin: 0 0 0 auto
+    display: block
+    padding: 10px 20px
+    border-radius: 0
+    border: none
+    background-color: $white_color
+    line-height: 1
+    font-family: serif
+
 .l-box
   width: 100%
   height: 100vh
