@@ -13,7 +13,7 @@ export async function GET(reqest:NextRequest) {
 }
 
 export async function POST(reqest:NextRequest) {
-  const { title, body, email } = await reqest.json();
+  const { title, body, name, email } = await reqest.json();
   const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -25,7 +25,9 @@ export async function POST(reqest:NextRequest) {
     from: env.NODEMAILER_EMAIL,
     to: env.NODEMAILER_EMAIL,
     subject: `Message from お問い合わせ(${email})`,
-    text: `title: ${title}
+    text: `氏名: ${name}
+    タイトル: ${title}
+    内容　------------
     ${body}`
   } 
   try {
