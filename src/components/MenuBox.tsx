@@ -24,7 +24,7 @@ export default function MenuBox(props: Props) {
       <canvas id="menu" className="canvas" ref={el}></canvas>
       <nav className="nenu-nav">
         {linkLists.map((link) => 
-          <Link href={link.path} as={link.path} legacyBehavior>
+          <Link href={link.path} as={link.path} key={link.path} legacyBehavior>
             <a className="link" onClick={menuAction}>
               {link.name}
             </a>
