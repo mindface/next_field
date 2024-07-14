@@ -25,15 +25,16 @@ export async function POST(reqest:NextRequest) {
     from: env.NODEMAILER_EMAIL,
     to: env.NODEMAILER_EMAIL,
     subject: `Message from お問い合わせ(${email})`,
-    text: `氏名: ${name}
-    タイトル: ${title}
-    内容　------------
-    ${body}`
-  } 
+    text: `氏名: ${name}`,
+    html: `
+    <p>タイトル: ${title}</p>
+    <p>内容　------------</p>
+    <div>${body}</div>`
+  }
   try {
     await transport.sendMail(mailOptions);
-    return NextResponse.json({ message: "Success!", status: 200 });
+    return NextResponse.json({ message: "Success", status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "Failed!", status: 500 });
+    return NextResponse.json({ message: "Failed", status: 500 });
   }
 }

@@ -14,7 +14,6 @@ export default function ContactContent() {
       title,
       body,
     };
-    console.log(sendItem);
 
     if(
       name === "" &&
@@ -35,9 +34,9 @@ export default function ContactContent() {
   return (
     <div className="content">
       <h3 className="content__title">お問い合わせ</h3>
-      <form action={submitAction} className="content--form">
-        <ContactContentForm />
-      </form>
+      <ContactContentForm />
+      {/* server componentを使おうとするとapi側でメールを送信できないため現状ContactContentFormで処理形成 */} 
+      {/* <form action={submitAction} className="content--form"><ContactContentForm /></form> */}
     </div>
   );
 }
