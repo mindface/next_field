@@ -15,7 +15,7 @@ export default function ContactContentForm() {
       name,
       email,
       title,
-      body,
+      body: body.replace(/\n/g,'<br>'),
     };
     if(
       name === "" &&
@@ -36,7 +36,6 @@ export default function ContactContentForm() {
       });
       const response = await res.json();
       if(response.status === 200) {
-        console.log("200----");
         router.push('/thanks');
       }
     } catch (error) {
