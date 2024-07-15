@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 import { env } from "process";
-import { redirect } from "next/navigation";
 
 // test用
 export async function GET(reqest:NextRequest) {

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { convertLinesToParagraphs } from "../libs/convertString";
 
 export default function ContactContentForm() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function ContactContentForm() {
       name,
       email,
       title,
-      body: body.replace(/\n/g,'<br>'),
+      body: convertLinesToParagraphs(body),
     };
     if(
       name === "" &&
