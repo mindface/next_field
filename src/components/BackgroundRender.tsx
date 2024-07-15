@@ -57,6 +57,9 @@ export default function BackgroundRender() {
       case "/think":
         pathNameSet("sd_04.png");
         break;
+      case "/contact":
+        pathNameSet("sd_05.png");
+        break;
       default:
         pathNameSet("sd_01.png");
         break;

@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-import Mail from "nodemailer/lib/mailer";
 import nodemailer from "nodemailer";
 import { env } from "process";
 
@@ -15,7 +14,8 @@ export async function GET(reqest:NextRequest) {
 export async function POST(reqest:NextRequest) {
   const { title, body, name, email } = await reqest.json();
   const transport = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
     auth: {
       user: env.NODEMAILER_EMAIL,
       pass: env.NODEMAILER_PASSWORD
@@ -27,6 +27,7 @@ export async function POST(reqest:NextRequest) {
     subject: `Message from お問い合わせ(${email})`,
     text: `氏名: ${name}`,
     html: `
+    <p>氏名: ${name}</p>
     <p>タイトル: ${title}</p>
     <p>内容　------------</p>
     <div>${body}</div>`

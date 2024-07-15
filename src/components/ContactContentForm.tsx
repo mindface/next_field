@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { convertLinesToParagraphs } from "../libs/convertString";
 
 export default function ContactContentForm() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function ContactContentForm() {
       name,
       email,
       title,
-      body,
+      body: convertLinesToParagraphs(body),
     };
     if(
       name === "" &&
@@ -36,7 +37,7 @@ export default function ContactContentForm() {
       });
       const response = await res.json();
       if(response.status === 200) {
-        router.replace('/thanks');
+        router.push('/thanks');
       }
     } catch (error) {
       console.error(error);
@@ -44,32 +45,30 @@ export default function ContactContentForm() {
   };
 
   return (
-    <form onSubmit={() => sendAction()} method="post">
-      <div className="content-form">
-        <div className="content-form__name content-form--item">
-          <label htmlFor="name" className="label">お名前</label>
-          <input type="text" name="name" id="name" className="name" value={name} onChange={(e) => setName(e.target.value)} />
-        </div>
-        <div className="content-form__email content-form--item">
-          <label htmlFor="email" className="label">メールアドレス</label>
-          <input type="email" name="email" id="email" className="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="content-form__title content-form--item">
-          <label htmlFor="title" className="label">題名</label>
-          <input type="text" name="title" id="title" className="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
-        <div className="content-form__body content-form--item">
-          <label htmlFor="body" className="label">内容</label>
-          <textarea name="body" id="body" className="body textarea" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
-        </div>
-        {validationText !== "" && 
-        <div className="content-form__caution content-form--item">
-          未入力項目があります。
-        </div>}
-        <div className="content-form__submit content-form--item">
-          <input type="submit" id="submit" className="submit button" value={"送信"} />
-        </div>
+    <div className="content-form">
+      <div className="content-form__name content-form--item">
+        <label htmlFor="name" className="label">お名前</label>
+        <input type="text" name="name" id="name" className="name" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
-    </form>
+      <div className="content-form__email content-form--item">
+        <label htmlFor="email" className="label">メールアドレス</label>
+        <input type="email" name="email" id="email" className="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
+      <div className="content-form__title content-form--item">
+        <label htmlFor="title" className="label">題名</label>
+        <input type="text" name="title" id="title" className="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      </div>
+      <div className="content-form__body content-form--item">
+        <label htmlFor="body" className="label">内容</label>
+        <textarea name="body" id="body" className="body textarea" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+      </div>
+      {validationText !== "" && 
+      <div className="content-form__caution content-form--item">
+        未入力項目があります。
+      </div>}
+      <div className="content-form__submit content-form--item">
+        <input type="submit" id="submit" className="submit button" onClick={sendAction} value={"送信"} />
+      </div>
+    </div>
   );
 }
