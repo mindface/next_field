@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { convertLinesToParagraphs } from "../libs/convertString";
+import { invalidCheckEmail } from "../libs/validChecker";
 
 export default function ContactContentForm() {
   const router = useRouter();
@@ -19,12 +20,15 @@ export default function ContactContentForm() {
       body: convertLinesToParagraphs(body),
     };
     if(
-      name === "" &&
-      email === "" &&
-      title === "" &&
+      name === "" ||
+      email === "" ||
+      title === "" ||
       body === ""
     ) {
       setValidationText("未入力の項目があります。");
+      return;
+    }else if(!invalidCheckEmail(email)) {
+      setValidationText("メールアドレスを正しい形式で保存してください。");
       return;
     }else {
       setValidationText("");
@@ -63,9 +67,10 @@ export default function ContactContentForm() {
         <textarea name="body" id="body" className="body textarea" value={body} onChange={(e) => setBody(e.target.value)}></textarea>
       </div>
       {validationText !== "" && 
-      <div className="content-form__caution content-form--item">
-        未入力項目があります。
-      </div>}
+        <div className="content-form__caution content-form--item">
+          {validationText}
+        </div>
+      }
       <div className="content-form__submit content-form--item">
         <input type="submit" id="submit" className="submit button" onClick={sendAction} value={"送信"} />
       </div>
