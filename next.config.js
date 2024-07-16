@@ -1,13 +1,18 @@
 
-const withImages = require('next-images')
+const withImages = require("next-images");
+// const path = require("path");
 
-const config = {
+const nextConfig = {
   experimental: {
     serverActions: true,
   },
-}
+  // 調査中
+  // sassOptions: {
+  //   includePaths: [path.join(__dirname, "src/app/styles/style.sass")],
+  // },
+};
 
-module.exports = config;
+module.exports = nextConfig;
 
 // withImages({
 //  webpack (config, options) {
