@@ -17,7 +17,7 @@ export default function ContactContentForm() {
       name,
       email,
       title,
-      body: convertLinesToParagraphs(body),
+      body: body,
     };
     if(
       name === "" ||

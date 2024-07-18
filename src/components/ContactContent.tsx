@@ -2,7 +2,7 @@ import ContactContentForm from "./ContactContentForm";
 
 export default function ContactContent() {
   const submitAction = async (formData: FormData) => {
-    "use server";
+    // "use server";
     const name = formData.get("name");
     const email = formData.get("email");
     const title = formData.get("title");

@@ -10,3 +10,7 @@ export const convertLinesToParagraphs = (text: string) => {
   }).join("");
   return newParagraphs;
 }
+
+export const sanitaizeText = (text: string) => {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
