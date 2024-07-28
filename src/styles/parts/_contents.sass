@@ -80,6 +80,8 @@
         background-color: rgba(0, 61, 81, 0.8)
       &:nth-child(3n)
         background-color: rgba(58, 35, 0,0.8)
+.back-image-outer
+  inset: 0
 
 .back-image
   position: fixed
@@ -90,6 +92,7 @@
   height: 100vh
   transform: translate(-50%,-50%)
   background-size: cover
+  object-fit: cover
   @media screen and ( max-width: $width-tab )
     max-width: inherit
     height: 100%
