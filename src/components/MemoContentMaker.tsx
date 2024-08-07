@@ -10,11 +10,11 @@ export default function MemoContentMaker() {
   const [repository_data, setRepositoryData] = useState([]);
 
   // useEffect(() => {
-    // const on_load_js = new OnLoadJs();
-    // on_load_js.init();
-    // const titles = el.current.querySelectorAll(".content__title");
-    // textFade(titles);
-    // fetachGetData("maker");
+  // const on_load_js = new OnLoadJs();
+  // on_load_js.init();
+  // const titles = el.current.querySelectorAll(".content__title");
+  // textFade(titles);
+  // fetachGetData("maker");
   // }, []);
 
   function textFade(titles) {

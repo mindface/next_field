@@ -23,13 +23,13 @@ export default function MenuBox(props: Props) {
     <section className="canvas-section menu-section _flex_c_">
       <canvas id="menu" className="canvas" ref={el}></canvas>
       <nav className="nenu-nav">
-        {linkLists.map((link) => 
+        {linkLists.map((link) => (
           <Link href={link.path} as={link.path} key={link.path} legacyBehavior>
             <a className="link" onClick={menuAction}>
               {link.name}
             </a>
           </Link>
-        )}
+        ))}
       </nav>
     </section>
   );

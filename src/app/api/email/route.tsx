@@ -1,10 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 import { env } from "process";
-import { sanitaizeText, convertLinesToParagraphs } from "../../../libs/convertString";
+import {
+  sanitaizeText,
+  convertLinesToParagraphs,
+} from "../../../libs/convertString";
 
 // test用
-export async function GET(reqest:NextRequest) {
+export async function GET(reqest: NextRequest) {
   try {
     return NextResponse.json({ name: "Contact Api" });
   } catch (error) {
@@ -12,7 +15,7 @@ export async function GET(reqest:NextRequest) {
   }
 }
 
-export async function POST(reqest:NextRequest) {
+export async function POST(reqest: NextRequest) {
   const { title, body, name, email } = await reqest.json();
   const _title = sanitaizeText(title);
   const _body = convertLinesToParagraphs(sanitaizeText(body));
@@ -23,8 +26,8 @@ export async function POST(reqest:NextRequest) {
     port: 587,
     auth: {
       user: env.NODEMAILER_EMAIL,
-      pass: env.NODEMAILER_PASSWORD
-    }
+      pass: env.NODEMAILER_PASSWORD,
+    },
   });
   const mailOptions = {
     from: env.NODEMAILER_EMAIL,
@@ -35,8 +38,8 @@ export async function POST(reqest:NextRequest) {
     <p>氏名: ${_name}</p>
     <p>タイトル: ${_title}</p>
     <p>内容　------------------------</p>
-    <div>${_body}</div>`
-  }
+    <div>${_body}</div>`,
+  };
   const mailThanksOptions = {
     from: env.NODEMAILER_EMAIL,
     to: _email,
@@ -49,9 +52,9 @@ export async function POST(reqest:NextRequest) {
     <p>お時間をいただき恐縮ですが、今しばらくお待ちいただけますと幸いです。</p>
     <p>内容　------------------------</p>
     <p>タイトル: ${_title}</p>
-    <div>${_body}</div>`
-  }
-  
+    <div>${_body}</div>`,
+  };
+
   try {
     await transport.sendMail(mailOptions);
     await transport.sendMail(mailThanksOptions);
