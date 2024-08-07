@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 // import CircleCanvas from "./module/CircleCanvas";
 import InteractivePoints from "./module/InteractivePoints";
