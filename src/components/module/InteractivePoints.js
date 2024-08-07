@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import gsap from "gsap";
 
+
 export default class InteractivePoints {
   constructor(props) {
     this.props = props;
@@ -109,7 +110,7 @@ export default class InteractivePoints {
     );
     this.geometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
 
-    // const material = new THREE.MeshNormalMaterial()
+    // const material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
     const material = new THREE.ShaderMaterial({
       uniforms: {
         color: { value: new THREE.Color(0xffffff) },
@@ -120,11 +121,14 @@ export default class InteractivePoints {
       alphaTest: 0.9,
     });
 
-    for (let index = 0; index < 6; index++) {
+    // for (let index = 0; index < 6; index++) {
+    //   this.particles = new THREE.Points(this.geometry, material);
+    //   this.particles.position.set(300 - 100 * index, 100 * index, 0);
+    //   this.scene.add(this.particles);
+    // }
       this.particles = new THREE.Points(this.geometry, material);
-      this.particles.position.set(300 - 100 * index, 100 * index, 0);
+      this.particles.position.set(300 - 100, 100, 0);
       this.scene.add(this.particles);
-    }
 
     this.meshs = new THREE.Mesh(this.geometry, material);
     this.scene.add(this.meshs);
@@ -142,7 +146,7 @@ export default class InteractivePoints {
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.size.w, this.size.h);
 
-    document.addEventListener("mousemove", this.onDocumentMouseMove, false);
+    // document.addEventListener("mousemove", this.onDocumentMouseMove, false);
     // window.addEventListener("resize", this.onWindowResize, false);
 
     const render = () => {
@@ -156,7 +160,7 @@ export default class InteractivePoints {
       this.camera.position.x += (this.mouseX - this.camera.position.x) * 0.05;
       this.camera.position.y += (-this.mouseY - this.camera.position.y) * 0.05;
 
-      this.camera.lookAt(this.scene.position);
+      // this.camera.lookAt(this.scene.position);
 
       // this.meshs.traverse( function ( object ) {
 
