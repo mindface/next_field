@@ -1,45 +1,45 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useRef } from "react";
 // import MemoSectionNavi from "./MemoSectionNavi";
-import OnLoadJs from "../on_load_js/base";
-import { client } from "../libs/microcms.client";
+// import OnLoadJs from "../on_load_js/base";
+// import { client } from "../libs/microcms.client";
 
 export default function MemoContentMaker() {
   const el = useRef(null);
-  const [post_data, setPostData] = useState([]);
-  const [repository_data, setRepositoryData] = useState([]);
+  // const [post_data, setPostData] = useState([]);
+  // const [repository_data, setRepositoryData] = useState([]);
 
   // useEffect(() => {
-    // const on_load_js = new OnLoadJs();
-    // on_load_js.init();
-    // const titles = el.current.querySelectorAll(".content__title");
-    // textFade(titles);
-    // fetachGetData("maker");
+  // const on_load_js = new OnLoadJs();
+  // on_load_js.init();
+  // const titles = el.current.querySelectorAll(".content__title");
+  // textFade(titles);
+  // fetachGetData("maker");
   // }, []);
 
-  function textFade(titles) {
-    titles.forEach((element) => {
-      let putText = "";
-      let text = element.innerText;
-      let text_array = text.split("");
-      text_array.map((text, index) => {
-        putText +=
-          "<span class='l' style='animation-delay:" +
-          index * 0.1 +
-          "s' >" +
-          text +
-          "</span>";
-      });
-      element.innerHTML = putText;
-    });
-  }
+  // function textFade(titles) {
+  //   titles.forEach((element) => {
+  //     let putText = "";
+  //     let text = element.innerText;
+  //     let text_array = text.split("");
+  //     text_array.map((text, index) => {
+  //       putText +=
+  //         "<span class='l' style='animation-delay:" +
+  //         index * 0.1 +
+  //         "s' >" +
+  //         text +
+  //         "</span>";
+  //     });
+  //     element.innerHTML = putText;
+  //   });
+  // }
 
-  async function fetachGetData(rule) {
-    const data = await client.get({
-      endpoint: rule,
-    });
-    if (rule === "maker") setPostData(data.contents);
-  }
+  // async function fetachGetData(rule) {
+  //   const data = await client.get({
+  //     endpoint: rule,
+  //   });
+  //   if (rule === "maker") setPostData(data.contents);
+  // }
 
   return (
     <div className="content" ref={el}>

@@ -6,4 +6,4 @@ export async function GET(req: NextRequest, res: NextResponse) {
   } catch (error) {
     throw error;
   }
-};
+}
