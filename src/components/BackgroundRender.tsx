@@ -11,73 +11,49 @@ import sd05Image from "../images/sd_05.png";
 
 function SwitchBackgroundNextImage() {
   const pathname = usePathname();
-  const [imageWidth, imageWidthSet] = useState(0);
-  const [imageHeight, imageHeightSet] = useState(0);
-  useEffect(() => {
-    imageWidthSet(window.innerWidth);
-    imageHeightSet(window.innerHeight);
-  }, [pathname]);
   switch (pathname) {
     case "/":
       return (
-        <Image
-          className="back-image"
-          alt="背景画像01"
-          src={sd01Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像01",
+          module: sd01Image
+        }
       );
     case "/about":
       return (
-        <Image
-          className="back-image"
-          alt="背景画像02"
-          src={sd02Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像02",
+          module: sd02Image
+        }
       );
     case "/memo":
       return (
-        <Image
-          className="back-image"
-          alt="背景画像03"
-          src={sd03Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像03",
+          module: sd03Image
+        }
       );
     case "/think":
       return (
-        <Image
-          className="back-image"
-          alt="背景画像04"
-          src={sd04Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像04",
+          module: sd04Image
+        }
       );
       break;
     case "/contact":
       return (
-        <Image
-          className="back-image"
-          alt="背景画像05"
-          src={sd05Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像05",
+          module: sd05Image
+        }
       );
     default:
       return (
-        <Image
-          className="back-image"
-          alt="背景画像01"
-          src={sd01Image}
-          width={imageWidth}
-          height={imageHeight}
-        />
+        {
+          alt: "背景画像01",
+          module: sd01Image
+        }
       );
   }
 }
@@ -85,9 +61,14 @@ function SwitchBackgroundNextImage() {
 export default function BackgroundRender() {
   // const el = useRef(null);
   // const router = useRouter();
-  // const pathname = usePathname();
+  const pathname = usePathname();
   // const [pathName, pathNameSet] = useState("sd_01.png");
-
+  const [imageWidth, imageWidthSet] = useState(0);
+  const [imageHeight, imageHeightSet] = useState(0);
+  useEffect(() => {
+    imageWidthSet(window.innerWidth);
+    imageHeightSet(window.innerHeight);
+  }, [pathname]);
   // useEffect(() => {
   //   // three jsを利用したアニメーション
   //   // new Base(el.current, switchBackground(router.pathname));
@@ -115,14 +96,15 @@ export default function BackgroundRender() {
   // )
   return (
     <div className="back-image-outer">
-      {/* <NextImage
+      <Image
         className="back-image"
-        alt="背景画像"
-        src={'/'+pathName}
+        alt={SwitchBackgroundNextImage().alt}
+        src={SwitchBackgroundNextImage().module}
+        priority={true}
         width={imageWidth}
         height={imageHeight}
-      /> */}
-      <SwitchBackgroundNextImage />
+      />
+      {/* <SwitchBackgroundNextImage /> */}
     </div>
   );
 }
