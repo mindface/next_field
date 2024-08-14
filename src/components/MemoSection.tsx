@@ -5,6 +5,10 @@ import MemoContentMaker from "./MemoContentMaker";
 const getStaticPostList = async () => {
   const repositoryData = await client.get({
     endpoint: "repositories",
+    // 更新が発生するケースで利用(ISR)
+    // customRequestInit: {
+    //   next: { revalidate: 60 * 10 } // ※10分
+    // }
   });
   return repositoryData.contents;
 };
