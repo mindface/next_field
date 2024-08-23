@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import Link from "next/link";
 // import CircleCanvas from "./module/CircleCanvas";
 import InteractivePoints from "./module/InteractivePoints";
@@ -9,19 +8,18 @@ type Props = {
 };
 
 export default function MenuBox(props: Props) {
-  const el = useRef(null);
   const menuAction = props.menuAction ?? (() => {});
-
-  useEffect(() => {
-    const hierarchy = new InteractivePoints({
-      f_canvas: el.current,
-    });
-    hierarchy.init();
-  }, []);
 
   return (
     <section className="canvas-section menu-section _flex_c_">
-      <canvas id="menu" className="canvas" ref={el}></canvas>
+      <canvas id="menu" className="canvas" ref={(node) => {
+        if(node) {
+          const hierarchy = new InteractivePoints({
+            f_canvas: node,
+          });
+          hierarchy.init();
+        }
+      }}></canvas>
       <nav className="nenu-nav">
         {linkLists.map((link) => (
           <Link href={link.path} as={link.path} key={link.path} legacyBehavior>
