@@ -7,11 +7,7 @@ export default function BaseNavi() {
   let [_switch, _setSwitch] = useState(false);
 
   function menuBtnSwitch() {
-    if (_switch) {
-      _setSwitch(false);
-    } else {
-      _setSwitch(true);
-    }
+    _setSwitch(!_switch);
   }
 
   return (

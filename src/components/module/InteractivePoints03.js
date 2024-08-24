@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import gsap from "gsap";
 
 export default class InteractivePoints {
   constructor(props) {
@@ -14,11 +13,8 @@ export default class InteractivePoints {
     this.scene.background = new THREE.Color(0x201919);
     this.camera = new THREE.PerspectiveCamera(45, this.size.w / this.size.h);
 
-    this.renderer = null;
-    this.meshs = null;
-    this.INTERSECTED = "";
-    this.rot = 0;
-    this.PARTICLE_SIZE = 20;
+    this.windowHalfX = window.innerWidth / 2;
+    this.windowHalfY = window.innerHeight / 2;
   }
 
   nextSlide() {
@@ -34,7 +30,7 @@ export default class InteractivePoints {
 
     this.camera = new THREE.PerspectiveCamera(45, this.size.w / this.size.h);
 
-    this.rot = 0;
+    let rot = 0;
     const vertices = [];
     const SIZE = 3000;
     const LENGTH = 1000;
@@ -51,13 +47,12 @@ export default class InteractivePoints {
     geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 5,
+      size: 10,
       color: 0xffffff,
     });
 
     const mesh = new THREE.Points(geometry, material);
-    this.scene.add(mesh);
-    let rot = 0;
+    this.scene.add(mesh);  
 
     const tick = () =>  {
       rot += 0.1;
@@ -72,18 +67,5 @@ export default class InteractivePoints {
     }
     tick();
 
-  }
-
-  tick() {
-    this.rot = 0;
-    this.rot += 0.1;
-    const radian = (this.rot * Math.PI) / 180;
-    this.camera.position.x = 1000 * Math.sin(radian);
-    this.camera.position.z = 1000 * Math.cos(radian);
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
-
-    this.renderer.render(this.scene, this.camera);
-
-    requestAnimationFrame(this.tick);
   }
 }
