@@ -14,21 +14,9 @@ export default class InteractivePoints {
     this.scene.background = new THREE.Color(0x201919);
     this.camera = new THREE.PerspectiveCamera(45, this.size.w / this.size.h);
 
-    this.windowHalfX = window.innerWidth / 2;
-    this.windowHalfY = window.innerHeight / 2;
-
-    this.geometry = null;
-    this.material = null;
-    this.particles = null;
-
     this.renderer = null;
-    this.raycaster = null;
-    this.intersects = null;
     this.meshs = null;
-    this.mouse = new THREE.Vector2();
     this.INTERSECTED = "";
-    this.mouseX = 0;
-    this.mouseY = 0;
     this.rot = 0;
     this.PARTICLE_SIZE = 20;
   }
@@ -63,7 +51,7 @@ export default class InteractivePoints {
     geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
 
     const material = new THREE.PointsMaterial({
-      size: 10,
+      size: 5,
       color: 0xffffff,
     });
 
@@ -98,25 +86,4 @@ export default class InteractivePoints {
 
     requestAnimationFrame(this.tick);
   }
-
-  onWindowResize() {
-  }
-
-  onDocumentMouseMove(event) {
-  }
-
-  setUpLight() {
-  }
-
-  addCtxText(canvas) {
-  }
-
-  setUpSize() {
-    this.size = {
-      w: window.innerWidth,
-      h: window.innerHeight,
-    };
-  }
-
-  setUpCamera() {}
 }
