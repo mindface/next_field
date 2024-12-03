@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import AboutSection from "../../../components/AboutSection";
+import AboutSection from "../../components/AboutSection";
 
 export const metadata: Metadata = {
   title: "next-field About",
