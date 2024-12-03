@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-// import Base from "./module/Base";
+import Base from "./module/Base";
 import { usePathname } from "next/navigation";
 import sd01Image from "../images/sd_01.png";
 import sd02Image from "../images/sd_02.png";
@@ -59,51 +59,61 @@ function SwitchBackgroundNextImage() {
 }
 
 export default function BackgroundRender() {
-  // const el = useRef(null);
-  // const router = useRouter();
+  const el = useRef(null);
+  const [baseInstance,baseInstanceSet] = useState(new Base);
   const pathname = usePathname();
+  const [domLoad, domLoadSet] = useState(true);
   // const [pathName, pathNameSet] = useState("sd_01.png");
-  const [imageWidth, imageWidthSet] = useState(0);
-  const [imageHeight, imageHeightSet] = useState(0);
-  useEffect(() => {
-    imageWidthSet(window.innerWidth);
-    imageHeightSet(window.innerHeight);
-  }, [pathname]);
+  // const [imageWidth, imageWidthSet] = useState(0);
+  // const [imageHeight, imageHeightSet] = useState(0);
   // useEffect(() => {
-  //   // three jsを利用したアニメーション
-  //   // new Base(el.current, switchBackground(router.pathname));
-  //   switchBackgroundImage();
+  //   imageWidthSet(window.innerWidth);
+  //   imageHeightSet(window.innerHeight);
   // }, [pathname]);
 
-  // function switchBackground(pathName) {
-  //   switch (pathName) {
-  //     case "/":
-  //       return 0;
-  //     case "/about":
-  //       return 1;
-  //     case "/memo":
-  //       return 2;
-  //     default:
-  //       return 0;
-  //   }
-  // }
+  function switchBackground(pathName) {
+    switch (pathName) {
+      case "/":
+        return 0;
+      case "/about":
+        return 1;
+      case "/memo":
+        return 2;
+      default:
+        return 0;
+    }
+  }
+
+  useEffect(() => {
+    if(el.current && domLoad) {
+      baseInstanceSet(new Base(el.current, switchBackground(pathname)));
+      domLoadSet(false);
+    }
+    if(baseInstance) {
+      baseInstance.nextSlide(switchBackground(pathname));
+    }
+  },[el, baseInstance, pathname])
 
   // three jsを利用したアニメーション
-  // return (
-  //   <section className="canvas-section bg-section">
-  //     <canvas id="can" className="canvas" ref={el}></canvas>
-  //   </section>
-  // )
+  return (
+    <section className="canvas-section bg-section">
+      <canvas id="can" className="canvas" ref={(node) => {
+        let baseInstance: Base;
+        el.current = node;
+      }}></canvas>
+    </section>
+  )
+
   return (
     <div className="back-image-outer">
-      <Image
+      {/* <Image
         className="back-image"
         alt={SwitchBackgroundNextImage().alt}
         src={SwitchBackgroundNextImage().module}
         priority={true}
         width={imageWidth}
         height={imageHeight}
-      />
+      /> */}
       {/* <SwitchBackgroundNextImage /> */}
     </div>
   );
