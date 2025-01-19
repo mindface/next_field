@@ -61,6 +61,7 @@ function SwitchBackgroundNextImage() {
 export default function BackgroundRender() {
   const el = useRef(null);
   const [baseInstance,baseInstanceSet] = useState(new Base);
+  const [beforePathname,beforePathnameSet] = useState("");
   const pathname = usePathname();
   const [domLoad, domLoadSet] = useState(true);
   // const [pathName, pathNameSet] = useState("sd_01.png");
@@ -86,13 +87,14 @@ export default function BackgroundRender() {
 
   useEffect(() => {
     if(el.current && domLoad) {
-      baseInstanceSet(new Base(el.current, switchBackground(pathname)));
+      baseInstanceSet(new Base(el.current, pathname));
       domLoadSet(false);
     }
-    if(baseInstance) {
-      baseInstance.nextSlide(switchBackground(pathname));
+    if(el.current && baseInstance) {
+      baseInstance.nextSlide(beforePathname.replace("/",""),pathname.replace("/",""));
     }
-  },[el, baseInstance, pathname])
+    beforePathnameSet(pathname);
+  },[el, baseInstance, pathname]);
 
   // three jsを利用したアニメーション
   return (
