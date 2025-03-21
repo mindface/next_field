@@ -27,7 +27,7 @@ export default class Base {
 
   private _tl = gsap.timeline();
 
-  constructor(canvas_element?: HTMLCanvasElement, path_number?: string) {
+  constructor(canvas_element?: HTMLCanvasElement, path_number?: number) {
     if(!canvas_element && !path_number) return;
     this.__vertex = `
     varying vec2 vUv;
@@ -119,7 +119,9 @@ export default class Base {
     this.imageLoader();
 
     this.__image_src.forEach((image, index) => {
-      const texture = loader.load(image + "?v=" + Date.now(), () => {});
+      const texture = loader.load(image + "?v=" + Date.now(), () => {
+        // this.re__view()
+      });
       texture.minFilter = THREE.LinearFilter;
       texture.generateMipmaps = false;
 
@@ -138,26 +140,26 @@ export default class Base {
       future: 0,
     };
 
-    // switch (path_number) {
-    //   case 1:
-    //     __view_number = {
-    //       now: 0,
-    //       future: 1,
-    //     };
-    //     break;
-    //   case 2:
-    //     __view_number = {
-    //       now: 1,
-    //       future: 2,
-    //     };
-    //     break;
-    //   default:
-    //     __view_number = {
-    //       now: 2,
-    //       future: 0,
-    //     };
-    //     break;
-    // }
+    switch (path_number) {
+      case 1:
+        __view_number = {
+          now: 0,
+          future: 1,
+        };
+        break;
+      case 2:
+        __view_number = {
+          now: 1,
+          future: 2,
+        };
+        break;
+      default:
+        __view_number = {
+          now: 2,
+          future: 0,
+        };
+        break;
+    }
 
     this.l_mate = new THREE.ShaderMaterial({
       uniforms: {
@@ -187,10 +189,10 @@ export default class Base {
 
     this.l_geom = new THREE.PlaneBufferGeometry(this.__width, this.__height, 1);
     this.l_image_meshs = new THREE.Mesh(this.l_geom, this.l_mate);
-    // this._scene.add(this.l_image_meshs);
+    this._scene.add(this.l_image_meshs);
 
     this.reView();
-    this.nextSlide(path_number,path_number);
+    this.nextSlide(path_number);
     // canvas_element.addEventListener('mousemove', (e) => this.onMouseMove(e, this.__mouse));
   }
 
@@ -201,13 +203,7 @@ export default class Base {
   }
 
   reView() {
-    if (!this.l_renderer || !this.l_camera) {
-      return;
-    }
     this.l_renderer.render(this._scene, this.l_camera);
-
-    const target = new THREE.Vector3(0, 0, 0);
-    this.l_camera.lookAt(target);
   }
 
   updateAnimations() {
@@ -256,48 +252,7 @@ export default class Base {
     this.l_camera.position.z = 5;
   }
 
-  nextSlide(path: string, nextPath: string) {
-    const positions = {
-      home: new THREE.Vector3(-5, 0, 25),
-      about: new THREE.Vector3(30, 10, 10),
-      memo: new THREE.Vector3(105, 125, 255),
-    };
-  
-    const zOffset = 10;
-    const duration = 2;
-    const currentPos = positions[path] || new THREE.Vector3(0, 0, 0);
-    const nextPos = positions[nextPath] || new THREE.Vector3(0, 0, 0);
-  
-    const midPos = new THREE.Vector3(
-      (currentPos.x + nextPos.x) / 2,
-      (currentPos.y + nextPos.y) / 2,
-      zOffset
-    );
-    
-    this._tl = gsap.timeline({
-      onUpdate: () => {
-        this.reView();
-      },
-    });
-  
-    this._tl
-      .to(this.l_camera?.position, {
-        x: midPos.x,
-        y: midPos.y,
-        z: midPos.z,
-        duration: duration / 2,
-        ease: "power1.inOut",
-      })
-      .to(this.l_camera?.position, {
-        x: nextPos.x,
-        y: nextPos.y,
-        z: nextPos.z,
-        duration: duration / 2,
-        ease: "power1.inOut",
-      });
-  }
-
-  _nextSlide(number: number) {
+  nextSlide(number: number) {
     if(!this.l_camera?.position) return;
     // this._tl = gsap.timeline();
 
@@ -347,17 +302,18 @@ export default class Base {
     this._tl = gsap.timeline({
       onUpdate: () => {
         const progress = this._tl.progress();
-        const angle = startAngle + (endAngle - startAngle) * progress;
+        const angle = startAngle + (endAngle - startAngle) * progress; // 円周上の角度を計算
 
-        this.l_camera.position.x = center.x + Math.cos(angle);
-        this.l_camera.position.z = center.z + Math.sin(angle);
-        this.l_camera.lookAt(center);
+        this.l_camera.position.x = center.x + Math.cos(angle) * radius;
+        this.l_camera.position.z = center.z + Math.sin(angle) * radius;
+        this.l_camera.lookAt(center); // カメラが常に中心を見るようにする
 
-        // this._sceneMeshes.forEach((mesh, index) => {
+        this._sceneMeshes.forEach((mesh, index) => {
+
           // mesh.position.x + Math.cos(angle) * radius;
           // mesh.rotation.y += 0.01;
           // mesh.rotation.x += 0.1;
-        // });
+        });
       },
       onComplete: () => {
         console.log(`Slide ${number} animation complete.`);
@@ -368,17 +324,17 @@ export default class Base {
       .to(this.l_mate.uniforms.dispPower, { duration: 2.5, value: 1, ease: "none" })
       .to(this.l_mate.uniforms.dispPower, { duration: 2.5, value: 0, ease: "none" }, `+=${duration}`);
     // this.changeBackgroundImage(this.__data.current, this.__data.next);
-    // this.__data.current = number;
-    // this.__data.next = (number + 1) % this.__image_src.length;
-    // this.changeBackgroundImage(this.__data.current, this.__data.next);
+    this.__data.current = number;
+    this.__data.next = (number + 1) % this.__image_src.length;
+    this.changeBackgroundImage(this.__data.current, this.__data.next);
 
-    // const renderLoop = () => {
-    //   this.reView();
-    //   if (!this._tl || this._tl.progress() < 1) {
-    //     requestAnimationFrame(renderLoop);
-    //   }
-    // };
-    // requestAnimationFrame(renderLoop);
+    const renderLoop = () => {
+      this.reView();
+      if (!this._tl || this._tl.progress() < 1) {
+        requestAnimationFrame(renderLoop);
+      }
+    };
+    requestAnimationFrame(renderLoop);
   }
 
   moveNext(number_old:number, number_new:number) {
